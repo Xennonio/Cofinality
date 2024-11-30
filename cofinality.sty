@@ -1,0 +1,392 @@
+\documentclass[11pt]{article}
+
+%% ----- Import Preamble -----
+\usepackage{preamble}
+
+%% Document
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+{Cofinalidade}\\
+{\large Ref. Introduction to Set Theory - Thomas Jech}
+
+\vspace{0.7cm}
+\textbf{Autor: Xenônio}\\
+Discord: xennonio
+\end{center}
+
+\tableofcontents
+
+\section{Prefácio}
+
+A ideia dessas notas é apresentar o conceito de cofinalidade, dando motivações e intuições sobre ela. Em geral, os primeiros capítulos são um aglomerado de resultados e exemplos a respeito da ideia de cofinalidade, mostrando como ela pode surgir como um conceito natural e quais propriedades seguem dela.
+
+Em particular, o conceito de cofinalidade nos leva naturalmente aos Axiomas de Grandes Cardinais. Veremos como cardinais fracamente inacessíveis surgem na análise de uma simples pergunta ao se estudar cardinais regulares e singulares, que é: existe algum cardinal limite regular incontável?
+
+Vale ressaltar que é assumido que o leitor tenha uma familiaridade com o básico de aritmética cardinal e ordinal para compreender as provas dos Teoremas, entretanto, caso não esteja, é possível entender a intuição por trás lendo apenas os comentários escritos ao longo do texto que direcionam o leitor a uma investigação natural dos conceitos definidos.
+
+\section{Motivação}
+
+\subsection{Exemplos Conhecidos}
+
+Considere os seguintes teoremas:
+
+\cl{orange!15}
+\begin{shaded}
+\begin{itemize}
+    \item A união finita de conjuntos finitos é finita, i.e., se $S$ é um sistema de conjuntos tal que $|S|<\omega_0$ e, para todo $A\in S$, temos que $|A|<\omega_0$, então
+    $$\left|\bigcup S\right|<\omega_0$$
+    \item Analogamente, temos que a união contável de conjuntos contáveis é contável, i.e., se $S$ é um sistema de conjuntos tal que $|S|<\omega_1$ e, para todo $A\in S$, temos que $|A|<\omega_1$, então
+    $$\left|\bigcup S\right|<\omega_1$$
+\end{itemize}
+\end{shaded}
+
+Note que, em cada caso, temos que a moral da história é que é difícil "alcançar" $\aleph_0$ e $\aleph_1$, respectivamente, "por baixo". Tal fenômeno pode ser capturado de forma precisa por meio do conceito de \textit{cofinalidade}.
+
+Em particular, generalizaremos a pergunta do seguinte modo: Sabemos que todo ordinal limite é o supremo do conjunto de todos os ordinais menores, i.e., para todo ordinal limite $\lambda$
+$$\lambda=\bigcup\lambda$$
+mas não necessariamente precisamos tomar o conjunto de \textit{todos} os ordinais menores, podemos encontrar um subconjunto próprio $S$ de $\lambda$ tal que $\lambda=\sup S$, o quão pequeno $S$ pode ser? Esse é o conceito que desejamos capturar.
+
+\subsection{Definição de Cofinalidade}
+
+\begin{definition}
+    Definiremos portanto $\cf(\alpha)$, a cofinalidade de $\alpha$, com $\alpha$ um ordinal limite, como o menor ordinal $\vartheta$ tal que $\alpha$ é o limite de uma sequência transfinita crescente $\langle\alpha_\nu:\nu<\vartheta\rangle$ de comprimento $\vartheta$, ou seja
+    $$\alpha=\lim_{\nu\to\vartheta}\alpha_\nu$$
+\end{definition}
+
+De forma equivalente, o que torna mais fácil de visualizar qual a relação disso com a motivação discutida acima, $\cf(\alpha)$ é o menor ordinal $\beta$ tal que existe $f:\beta\to\alpha$, com
+$$\alpha=\bigcup_{\nu<\beta}f(\nu)=\bigcup\text{Im}(f)$$
+i.e., é o menor $\beta$ tal que existe uma união de $\beta$ elementos $\alpha_\nu$ menores que $\alpha$
+
+\subsection{Cardinais Singulares e Regulares}
+
+Com isso, podemos definir dois tipos de cardinais $\kappa$, em particular aqueles que podem ser escritos como a união de $\kappa$ elementos menores, denominados singulares, e aqueles que não podem, denominados regulares, em outras palavras:
+
+\begin{definition}
+    Um cardinal infinito $\kappa$ é singular sse existe uma sequência transfinita crescente $\langle\alpha_\nu:\nu<\vartheta\rangle$ de ordinais $\alpha_\nu<\kappa$ cujo comprimento $\vartheta$ é um ordinal limite menor que $\kappa$ e
+    $$\kappa=\lim_{\nu\to\vartheta}\alpha_\nu$$
+    Um cardinal infinito que não é singular é denominado regular.
+\end{definition}
+
+De forma equivalente, podemos defini-los de uma maneira mais concreta por meio do seguinte lema
+
+\begin{lemma}
+\label{sing-sum}
+    Um cardinal infinito $\kappa$ é singular se, e somente se, é a soma de menos que $\kappa$ cardinais menores, i.e.
+    $$\kappa=\sum_{i\in I}\kappa_i$$
+    com $|I|<\kappa$ e $\kappa_i<\kappa$, para todo $i\in I$.
+\end{lemma}
+
+\begin{proof}
+    $(\Rightarrow)$ Se $\kappa$ é singular, então $\kappa=\lim_{\nu\to\vartheta}\alpha_\nu$ para alguma sequência transfinita crescente com $\alpha_\nu<\kappa$ e $\vartheta<\kappa$. Como todo ordinal é o conjunto de todos os ordinais menores, então
+    $$\kappa=\bigcup_{\nu<\vartheta}\alpha_\nu=\bigcup_{\nu<\vartheta}\rp{\alpha_\nu\backslash\bigcup_{\xi<\nu}\alpha_\xi}$$
+    definindo $A_\nu:=\alpha_\nu\backslash\bigcup_{\xi<\nu}\alpha_\xi$, temos que $\langle A_\nu:\nu<\vartheta\rangle$ é uma sequência de comprimento menor que $\kappa$ com conjuntos disjuntos de cardinalidade $\kappa_\nu=|A_\nu|=\left|\alpha_\nu\backslash\bigcup_{\xi<\nu}\alpha_\xi\right|\leq|\alpha_\nu|<\kappa$, portanto
+    $$\kappa=\sum_{\nu<\vartheta}\kappa_\nu$$
+    
+    $(\Leftarrow)$ Assuma que $\kappa=\sum_{\alpha<\lambda}\kappa_\alpha$, com $\lambda,\kappa_\alpha<\kappa$, para todo $\alpha<\lambda$. Portanto
+    $$\kappa=\sum_{\alpha<\lambda}\kappa_\alpha=\lambda\cdot\sup_{\alpha<\lambda}\kappa_\alpha$$ e, como $\lambda<\kappa$, então necessariamente $\kappa=\sup_{\alpha<\lambda}\kappa_\alpha$, pois, caso contrário, $\kappa=\lambda$, contradição. Logo $\kappa$ é o supremo da imagem da sequência transfinita $\langle\kappa_\alpha:\alpha<\lambda\rangle$, portanto é fácil achar uma subsequência crescente com limite $\kappa$.
+\end{proof}
+
+Note que tal caracterização captura bem a ideia discutida pela motivação. Podemos relacioná-la com o conceito de cofinalidade da seguinte forma: em particular é esperado e fácil verificar que, se $\kappa$ é um cardinal singular, então $\cf(\kappa)<\kappa$, i.e., existe uma sequência crescente de tamanho menor que $\kappa$ com elementos menores que $\kappa$, mas que tem $\kappa$ como limite e, se $\kappa$ for regular, como $\cf(\kappa)\leq\kappa$, temos que $\cf(\kappa)=\kappa$.
+
+\section{Exemplos e Propriedades de Cardinais Singulares e Regulares}
+
+\subsection{Exemplos de Cardinais Regulares e Singulares}
+
+Para facilitar a notação, diremos que um cardinal $\aleph_\alpha$ é um \textit{cardinal sucessor} se $\alpha$ for um ordinal sucessor, e diremos que é um \textit{cardinal limite} se $\alpha$ for um ordinal limite.
+
+Vamos explorar o conceito que criamos a alguns cardinais. Para os casos utilizados na motivação, temos que $\cf(\aleph_0)=\aleph_0$ e $\cf(\aleph_1)=\aleph_1$, i.e., ambos são cardinais regulares, vistos que não podem ser escritos como a união de $\aleph_0$ ou $\aleph_1$ elementos menores, respectivamente. Em particular, o teorema seguinte provará que todo cardinal sucessor $\aleph_{\alpha+1}$ é um cardinal regular, ou seja, não é fácil "atingi-lo por baixo", apenas com conjuntos menores.
+
+\begin{theorem}
+    Todo cardinal sucessor $\aleph_{\alpha+1}$ é um cardinal regular.
+\end{theorem}
+
+\begin{proof}
+    Assuma por contradição que $\aleph_{\alpha+1}$ seja singular, portanto, pelo Lema \ref{sing-sum}, ele pode ser escrito como a soma de um número menor de cardinais menores:
+    $$\aleph_{\alpha+1}=\sum_{i\in I}\kappa_i$$
+    com $|I|<\aleph_{\alpha+1}$ e $\kappa_i<\aleph_{\alpha+1}$, para todo $i\in I$. Portanto $|I|,\kappa_i\leq\aleph_\alpha$ para todo $i\in I$, logo, temos que
+    $$\aleph_{\alpha+1}=\sum_{i\in I}\kappa_i\leq\sum_{i\in I}\aleph_\alpha=\aleph_{\alpha}\cdot|I|\leq\aleph_\alpha\cdot\aleph_\alpha=\aleph_\alpha$$
+    contradição, portanto $\aleph_{\alpha+1}$ é um cardinal regular.
+\end{proof}
+
+
+Em contrapartida, temos que
+\begin{align*}
+\aleph_\omega & = \lim_{n\to\omega}\aleph_n\\
+\aleph_{\omega+\omega} & = \lim_{n\to\omega}\aleph_{\omega+n}\\
+\aleph_{\omega\cdot\omega} & = \lim_{n\to\omega}\aleph_{\omega\cdot n}\\
+\aleph_{\omega_1} & = \lim_{\alpha\to\omega_1}\aleph_\alpha
+\end{align*}
+
+É fácil ver que a grande maioria dos cardinais limites que temos contatos, exceto por $\aleph_0$ são de fato singulares, enunciaremos isso de uma maneira mais precisa com o próximo teorema. Além disso cada um dos exemplos mostrados acima tem cofinalidade $\omega$. Veremos o quão poderoso é isso quando apresentarmos outras formas intuitivas de visualizá-los, mas por enquanto vamos responder a perguntas naturais que surgem como: existem cardinais regulares arbitrariamente grandes? Ou melhor, todos os cardinais limites incontáveis são regulares?
+
+\subsection{Algumas Propriedades Básicas}
+
+Vamos antes mostrar que de fato existem cardinais singulares arbitrariamente grandes, e mais, se $\aleph_\alpha$ é um cardinal limite singular, então o menor cardinal limite maior que $\aleph_\alpha$, i.e., o próximo cardinal limite, também é singular.
+
+\begin{lemma}
+    Existem cardinais singulares arbitrariamente grandes.
+\end{lemma}
+\begin{proof}
+    Seja $\aleph_\alpha$ um cardinal arbitrário e considere a sequência
+    $$\aleph_\alpha,\aleph_{\alpha+1},\aleph_{\alpha+2},\dots,\aleph_{\alpha+n},\dots$$
+    para $n\in\omega$, portanto
+    $$\aleph_{\alpha+\omega}=\lim_{n\to\omega}\aleph_{\alpha+n}$$
+    e, portanto $\aleph_{\alpha+\omega}$ é um cardinal singular maior que $\aleph_\alpha$.
+\end{proof}
+
+Como corlário temos que
+
+\begin{corollary}
+    Se $\aleph_\alpha$ é um cardinal limite singular, então o próximo cardinal limite $\aleph_{\alpha+\omega}$ também é singular, em particular, se $\aleph_{\alpha}$ for regular, temos também que $\aleph_{\alpha+\omega}$ é singular.
+\end{corollary}
+
+Com isso, podemos ter uma visualização dos primeiros cardinais em relação a ser singular ou regular. Temos que, após $\aleph_0$, o cardinal primeiro cardinal limite regular, temos que todos os sucessores até $\aleph_\omega$ são regular, e $\aleph_\omega$ por si só é singular, em particular, pelo lema anterior, todos os cardinais $\aleph_\omega$ que podem ser atingidos por meio de soma, multiplicação e exponenciação, são fáceis de provar serem singulares. Portanto a "reta" dos cardinais possui, aparentemente, quase sempre um cardinal singular nos cardinais limites e sempre contáveis muitos cardinais regulares sucessores entre eles.
+
+\subsection{Cardinais Limites Regulares Incontáveis}
+
+Vamos agora investigar como seria um cardinal limite regular incontável, assuma que $\aleph_\alpha$ é tal cardinal, como $\alpha$ é um ordinal limite, então
+$$\aleph_\alpha=\lim_{\beta\to\alpha}\aleph_\beta$$
+i.e., $\aleph_\alpha$ é o limite de uma sequência crescente de comprimento $\alpha$. Como $\aleph_\alpha$ é um cardinal regular, então necessariamente $\alpha\geq\aleph_\alpha$, mas, como $\alpha\leq\aleph_\alpha$, então
+\begin{equation*}
+\fbox{$\alpha=\aleph_\alpha$}
+\end{equation*}
+tal propriedade sugere que esses cardinais tem de ser bem grandes. Entretanto, o Lema a seguir revela que a propriedade destacada não é tão forte assim quanto parece, visto que podemos provar também que existem cardinais singulares $\aleph_\alpha$ arbitráriamente grandes tais que $\aleph_\alpha=\alpha$.
+
+\begin{lemma}
+    Existem cardinais singulares $\aleph_\alpha$ arbitrariamente grandes tais que $\aleph_\alpha=\alpha$.
+\end{lemma}
+
+\begin{proof}
+    Seja $\aleph_\gamma$ um cardinal arbitrário e considere a sequência definida por $\alpha_0=\omega_\gamma$, $\alpha_1=\omega_{\alpha_0}=\omega_{\omega_\gamma}$, $\alpha_2=\omega_{\alpha_1}=\omega_{\omega_{\omega_\gamma}}$, etc. em geral, $\alpha_{n+1}=\omega_{\alpha_n}$, para todo $n\in\omega$. Com isso, seja $\alpha=\lim_{n\to\omega}\alpha_n$, obviamente $\langle\aleph_{\alpha_n}:n\in\omega\rangle$ tem limite $\aleph_\alpha$, logo
+    $$\aleph_\alpha=\lim_{n\to\omega}\aleph_{\alpha_n}=\lim_{n\to\omega}\alpha_{n+1}=\alpha$$
+    logo $\aleph_\alpha$ é o limite de uma sequência de cardinais menores com comprimento $\omega$, portanto $\aleph_\alpha$ é um cardinal singular maior que $\aleph_\gamma$.
+\end{proof}
+
+ Uma dúvida natural é qual seria exemplo de um cardinal limite regular incontável? Tais cardinais são denominados fracamente inacessíveis, e acontece que a existência de tais cardinais $\kappa$ é independente da ZFC, uma vez que $V_\kappa\vDash\text{ZFC}$, contradizendo o Segundo Teorema da Incompletude de Gödel.
+ 
+\subsection{Cofinalidade como a Cardinalidade de um Conjunto Ilimitado}
+
+ Vamos agora analisar uma visão um pouco diferente sobre como intuir sobre o conceito de cofinalidade, que nos será útil ao pensar no sentido prático da existência de tais cardinais.
+
+Podemos definir $\cf(\kappa)$ como a menor cardinalidade de um conjunto $A$ tal que $A\subseteq\kappa$ e, para todo $\beta<\kappa$, existe um $\alpha\in A$ tal que $\beta\leq\alpha$, i.e.
+$$\text{cf}(\kappa)=\min\{|A|:A\subseteq\kappa\wedge\forall\beta<\kappa(\exists\alpha\in A(\beta\leq\alpha))\}$$
+Em outras palavras, ele é o menor tamanho que um conjunto precisa ter para ser ilimitado em $\kappa$, tal definição de cofinalidade é equivalentes as anteriores.
+
+Em particular, o que estamos querendo dizer então, é que cardinais regulares precisam de muito mais elementos para conseguir tornar uma sequência ilimitada, enquanto que cardinais singulares não. Isso tem um impacto no seguinte sentido: Imagine que queiramos provar alguma propriedade, em relação a ordinais menores que $\aleph_\omega$, que tenha uma qualidade indutiva, tal processo requer somente contáveis muitos passos, uma vez que a cofinalidade de $\aleph_\omega$ é $\omega$, enquanto que, por exemplo, fazer o mesmo com $\aleph_1$ exigiria incontáveis muitos passos.
+
+\section{Propriedades Algébricas da Cofinalidade}
+
+Note que, provamos que se $\aleph_\alpha$ for singular, então $\cf(\omega_\alpha)<\omega_\alpha$ e, se for regular, então $\cf(\omega_\alpha)=\omega_\alpha$. Mostraremos que
+
+\begin{lemma}
+    Se um ordinal limite $\alpha$ não for um cardinal, então $\cf(\alpha)<\alpha$. Em particular, para todo ordinal limite $\alpha$, temos que $\cf(\alpha)=\alpha$ se, e somente se, $\alpha$ for um cardinal regular.
+\end{lemma}
+
+\begin{proof}
+    Seja $\alpha$ um número ordinal que não é um cardinal. Sendo $\kappa=|\alpha|$, existe $f:\kappa\to\alpha$ bijetor, i.e., uma sequência $\langle\alpha_\nu:\nu<\kappa\rangle$ de comprimento $\kappa$ tq $\{\alpha_\nu:\nu<\kappa\}=\alpha$. Agora podemos encontrar, via indução transfinita, uma subsequência crescente com limite $\alpha$. Como o comprimento da subsquência é no máximo $\kappa$, e como $\alpha<\kappa=|\alpha|$ (visto que $\alpha$ não é um cardinal), então $\cf(\alpha)<\alpha$.
+\end{proof}
+
+\begin{lemma}
+    Para todo ordinal limite $\alpha$, temos que
+    $$\cf(\cf(\alpha))=\cf(\alpha)$$
+\end{lemma}
+
+\begin{proof}
+    Seja $\vartheta=\cf(\alpha)$. Obviamente $\vartheta$ é um ordinal limite e $\cf(\vartheta)\leq\vartheta$. Assuma por contradição que $\gamma=\cf(\vartheta)<\vartheta$, logo existe uma seq. crescente $\langle\nu_\xi:\xi<\gamma\rangle$ tq $\lim_{\xi\to\gamma}\nu_\xi=\vartheta$. Como $\vartheta=\cf(\alpha)$, existe $\langle\alpha_{\nu_\xi}:\xi<\gamma\rangle$ com limite $\alpha$. Mas $\gamma<\vartheta$, contradição, visto que $\vartheta=\cf(\alpha)$ implica que $\vartheta$ é o menor ordinal tq $\alpha$ é o limite de uma sequência de comprimento $\vartheta$.
+\end{proof}
+
+\begin{corollary}
+    Para todo ordinal limite $\alpha$, $\cf(\alpha)$ é um cardinal regular.
+\end{corollary}
+
+\section{Exponenciação de Cardinais}
+
+Enquanto adição e multiplicação de cardinais é simples, uma vez que
+$$\aleph_\alpha+\aleph_\beta=\aleph_\alpha\cdot\aleph_\beta=\max\{\aleph_\alpha,\aleph_\beta\}$$
+a exponenciação de cardinais é bem mais complicada. Em particular, veremos alguns resultados básicos. Acontece que existe uma diferença entre cardinais regulares e singulares em relação a exponenciação.
+
+Em particular, veremos que a Hipótese Generalizada do Contínuo
+$$2^{\aleph_\alpha}=\aleph_{\alpha_+1},~\text{ para todo }\alpha$$
+simplifica enormemente exponenciação de cardinais e, sem ela, não há muito o que provar além de
+$$2^{\aleph_\alpha}\geq\aleph_{\alpha+1}$$
+e
+$$\alpha\leq\beta\Rightarrow 2^{\aleph_\alpha}\leq2^{\aleph_\beta}.$$
+
+\subsection{Teorema de König}
+Antes de provar alguns teoremas sobre exponenciação de cardinais, vamos provar o Teorema de König, que assume que estamos trabalhando na ZFC.
+
+\begin{theorem}
+    \textbf{Teorema de König.} Se $\kappa_i<\lambda_i$, $\forall i\in I$, onde $\kappa_i$ e $\lambda_i$ são cardinais, $i\in I$, então
+    $$\sum_{i \in I}\kappa_i<\prod_{i\in I}\lambda_i$$
+\end{theorem}
+
+A ideia por trás da prova é: Se $\kappa_i<\lambda_i$, então toda função $f_i:\kappa_i\to\lambda_i$ é não-sobrejetora, portanto, existe um elemento $b_i\in\lambda_i\backslash\text{Im}(f_i)$, com isso, obtemos que, para toda função $f:\bigcup_{i\in I}A_i\to\prod_{i\in I}B_i$, o elemento $b=\langle b_i:i\in I\rangle$ não está na imagem de $f$.
+
+\begin{proof}
+    Sejam $\langle A_i:i\in I\rangle$ e $\langle B_i:i\in I\rangle$ tais que $|A_i|=\kappa_i$ e $|B_i|=\lambda_i$ e $A_i$ mutuamente disjuntos, $i\in I$. Como $|A_i|<|B_i|$, então, dadas $f_i:A_i\to B_i$ injetoras, sabemos que elas não são sobrejetoras. Defina então
+    $$B_i^\dagger=\{x\in B_i:x\notin f_i[A_i]\}$$
+    Como $f_i$ não é sobrejetora, $B_i^\dagger\neq\emptyset$, $i\in I$, portanto, por AC podemos escolher $b_i^\dagger\in B_i^\dagger$, $i\in I$. Construiremos uma injeção
+    $$F:\bigcup_{i\in I}A_i\to\prod_{i\in I}B_i$$
+    da seguinte forma
+    $$\pi_j(F(a))=\begin{cases}
+        f_i(a),~i=j\\
+        b_j^\dagger,~i\neq j
+    \end{cases}$$
+    Se $F(x)=F(y)$, com $x\in A_i$ e $y\in A_j$, então
+    $$\pi_i(F(x))=\pi_i(F(y))$$
+    Se $i\neq j$, então
+    $$\pi_i(F(x))=f_i(x)=b_i^\dagger=\pi_i(F(y))$$
+    contradição, visto que $b_i^\dagger\notin f_i[A_i]$. Se $i=j$, então $f_i(x)=f_i(y)$, mas como $f_i$ é injetora, $x=y$, portanto $F$ é injetora. Vamos agora provar que não há nenhuma sobrejeção.
+
+    Assuma por contradição que $G:\bigcup_{i\in I}A_i\to\prod_{i\in I}B_i$ seja sobrejetora, defina
+    $$B_i^\ddagger=\{x\in B_i:x\notin \pi_i(G[A_i])\}$$
+    Como $(\pi_i\circ G):A_i\to B_i$, então ela não é sobrejetora e, portanto, $B_i^\ddagger\neq\emptyset$, $i\in I$. AC nos garante que existe $b=\left\langle b_i^\ddagger:i \in I\right\rangle$ tal que $b_i^\ddagger\in B_i^\ddagger$. Como $G$ é sobrejetora, existe $x\in A_i$, para algum $i\in I$, tal que $G(x)=b^\ddagger$, logo $\pi_i(G(x))=\pi_i\rp{b^\ddagger}\in B_i^\ddagger$, contradição, logo não existe $G$ sobrejetora.
+\end{proof}
+
+Note que a escolha de $B_i^\dagger$ e $B_i^\ddagger$ lembra a escolha de $X=\{x\in A:x\notin f(x)\}$ na prova do Teorema de Cantor e, de fato, o Teorema de Cantor é um corolário do Teorema de König para $\kappa_i=1$ e $\lambda_i=2$, $i\in I$.
+
+\subsection{Exponenciação Cardinal para Cardinais Regulares}
+
+Com o Teorema de König em mãos podemos provar o seguinte lema
+\begin{lemma}
+    Para todo ordinal $\alpha$
+    $$\cf\rp{2^{\aleph_\alpha}}>\aleph_\alpha$$
+\end{lemma}
+Note que o Lema anterior restringer vários valores para os quais $2^{\aleph_\alpha}$ não pode assumir, a depender de sua confinalidade. Por exemplo, se $2^{\aleph_0}=\aleph_\omega$, então $\cf\rp{2^{\aleph_0}}=\cf\rp{\aleph_\omega}=\aleph_0>\aleph_0$, contradição.
+
+\begin{proof}
+    Seja $\vartheta=\cf\rp{2^{\aleph_\alpha}}$, portanto, existem $\kappa_\nu<2^{\aleph_\alpha}$, $\nu<\vartheta$ tal que
+    $$2^{\aleph_\alpha}=\sup\langle\kappa_\nu:\nu<\vartheta\rangle=\vartheta\cdot\sup\langle\kappa_\nu:\nu<\vartheta\rangle=\sum_{\nu<\vartheta}\kappa_\nu$$
+    visto que $\vartheta=\cf\rp{2^{\aleph_\alpha}}\leq2^{\aleph_\alpha}$. Pelo Teorema de König, para $\lambda_\nu=2^{\aleph_\alpha}$, temos que
+    $$2^{\aleph_\alpha}=\sum_{\nu<\vartheta}\kappa_\nu<\prod_{\nu<\vartheta}2^{\aleph_\alpha}=\rp{2^{\aleph_\alpha}}^\vartheta$$
+    Assuma por contradição que $\vartheta\leq\aleph_\alpha$, logo
+    $$2^{\aleph_\alpha}>\rp{2^{\aleph_\alpha}}^\vartheta\leq\rp{2^{\aleph_\alpha}}^{\aleph_\alpha}=2^{\aleph_\alpha\cdot\aleph_\alpha}=2^{\aleph_\alpha}$$
+    contradição, portanto $\vartheta=\text{cf}\rp{2^{\aleph_\alpha}}>\aleph_\alpha$.
+\end{proof}
+
+Note que a prova do Teorema acima é exatamente a mesma para um cardinal $\kappa>1$ qualquer no lugar de $2$, o que nos fornece
+
+\begin{corollary}
+    Para todo cardinal $\kappa>1$ e todo ordinal $\alpha$
+    $$\cf\rp{\kappa^{\aleph_\alpha}}>\aleph_\alpha$$
+\end{corollary}
+
+Para cardinais $\aleph_\alpha$ regulares, as desigualdades mostradas até agora são as únicas propriedades que podem ser provadas para $2^{\aleph_\alpha}$. Entretanto, se $\aleph_\alpha$ for singular, então podemos provar várias outras propriedades. Provaremos um deles na seção seguinte e, mais adiante, provaremos o Teorema de Silver.
+
+\subsection{Exponenciação Cardinal para Cardinais Singulares}
+
+\begin{theorem}
+    Seja $\aleph_\alpha$ um cardinal singular, se $2^{\aleph_\xi}=\aleph_\beta$ para $\xi<\alpha$, então $2^{\aleph_\alpha}=\aleph_\beta$.
+\end{theorem}
+
+\begin{proof}
+    Como $\aleph_\alpha$ é singular existem $\kappa_i<\aleph_\alpha$, $i\in I$, com $|I|=\aleph_\lambda<\aleph_\alpha$ tal que
+    $$2^{\aleph_\alpha}=\sum_{i\in I}\kappa_i$$
+    Por hipótese, $2^{\kappa_i}=2^{\aleph_\lambda}=\aleph_\beta$, logo
+    $$2^{\aleph_\alpha}=2^{\sum_{i\in I}\kappa_i}=\prod_{i\in I}2^{\kappa_i}=\prod_{i\in I}\aleph_\beta=\rp{\aleph_\beta}^{\aleph_\lambda}=\rp{2^{\aleph_\lambda}}^{\aleph_\lambda}=2^{\aleph_\lambda}=\aleph_\beta$$
+\end{proof}
+
+\begin{lemma}
+    Se $\alpha\leq\beta$, então
+    $$\aleph_\alpha^{\aleph_\beta}=2^{\aleph_\beta}$$
+\end{lemma}
+
+\begin{proof}
+    Como $2<\aleph_\alpha$, obviamente $2^{\aleph_\beta}\leq\aleph_\alpha^{\aleph_\beta}$. Pelo Teorema de Cantor $\aleph_\alpha<2^{\aleph_\alpha}$, logo
+    $${\aleph_\alpha}^{\aleph_\beta}\leq\rp{2^{\aleph_\alpha}}^{\aleph_\beta}=2^{\aleph_\alpha\cdot\aleph_\beta}=2^{\aleph_\beta}$$
+\end{proof}
+
+Ao tentar calcular $\aleph_\alpha^{\aleph_\beta}$ para $\alpha>\beta$ o seguinte resultado é útil
+
+\begin{lemma}
+    Seja $\alpha\geq\beta$, logo
+    $$\left|[\omega_\alpha]^{\aleph_\beta}\right|=\aleph_\alpha^{\aleph_\beta}$$
+\end{lemma}
+
+\begin{proof}
+    Como $|\omega_\alpha\times\omega_\beta|=\aleph_\alpha\cdot\aleph_\beta=\aleph_\alpha=|\omega_\alpha|$, então $\left|[\omega_\alpha\times\omega_\beta]^{\aleph_\beta}\right|=\left|[\omega_\alpha]^{\aleph_\beta}\right|$. Agora, toda função $f:\omega_\beta\to\omega_\alpha$ está em $[\omega_\alpha\times\omega_\beta]^{\aleph_\beta}$, portanto $\omega_\alpha^{\omega_\beta}\subseteq[\omega_\alpha\times\omega_\beta]^{\aleph_\beta}$, então
+    $$\left|\omega_\alpha^{\omega_\beta}\right|=\aleph_\alpha^{\aleph_\beta}\leq\left|[\omega_\alpha\times\omega_\beta]^{\aleph_\beta}\right|=\left|[\omega_\alpha]^{\aleph_\beta}\right|$$
+    Para a desigualdade contrária, se $X\in[\omega_\alpha]^{\aleph_\beta}$, então existe $f$ em $\omega_b$ tal que $\text{Im}(f)=X$. Com isso, dada tal função $f_X$ para cada $X\in[\omega_\alpha]^{\aleph_\beta}$, definimos $F(X)=f_X$. Se $X\neq Y$, então $\text{Im}(f_X)=X$ e $\text{Im}(f_Y)=Y$, logo $F(X)=f_X\neq f_Y=F(y)$, i.e., $F$ é injetora e, portanto
+    $$\left|[\omega_\alpha]^{\aleph_\beta}\right|\leq\left|\omega_\alpha^{\omega_\beta}\right|=\aleph_\alpha^{\aleph_\beta}$$
+\end{proof}
+
+\subsection{Como calcular \texorpdfstring{$\aleph_\alpha^{\aleph_\beta}$}{} em ZFC + GHC}
+
+Assumindo a Hipótese Generalizada do Contínuo (GHC), podemos provar os seguintes teoremas
+
+\begin{theorem}
+    \textbf{(GHC)} Se $\aleph_\alpha$ é um cardinal regular, então
+    $$\aleph_\alpha^{\aleph_\beta}=
+    \begin{cases}
+        \aleph_\alpha,\text{ se }\alpha>\beta\\
+        \aleph_{\beta+1},\text{ se }\alpha\leq\beta
+    \end{cases}
+    $$
+\end{theorem}
+
+\begin{proof}
+    Se $\alpha\leq\beta$, pelo Lema 5.2. $\aleph_\alpha^{\aleph_\beta}=2^{\aleph_\beta}=\aleph_{\beta+1}$. Seja então $\alpha>\beta$. Seja $S=[\omega_\alpha]^{\aleph_\beta}$, pelo Lema 5.3. $|S|=\aleph_\alpha^{\aleph_\beta}$. Na seção 3.4. provamos que a cofinalidade de $\kappa$ pode ser interpretada como o menor tamanho que um conjunto precisa ter para ser ilimitado em $\kappa$. Em particular, como $\cf(\aleph_\alpha)=\aleph_\alpha$ para cardinais regulares, sabemos que todo $X\subseteq\omega_\alpha$, tal que $|X|<\aleph_\alpha$, é limitado. Seja portanto
+    $$B=\bigcup_{\delta<\omega_\alpha}\mc{P}(\delta)$$
+    a coleção de todos os subconjuntos limitados de $\omega_\alpha$. Mostraremos que $|B|\leq\aleph_\alpha$ e, como $S\subset B$, então $|S|=\aleph_\alpha^{\aleph_\beta}=\aleph_\alpha$, visto que obviamente $|S|=\aleph_\alpha^{\aleph_\beta}\geq\aleph_\alpha$. Da definição de $B$ obtemos que
+    $$|B|\leq\sum_{\delta<\omega_\alpha}2^{|\delta|}$$
+    Entretanto, para todo cardinal $\aleph_\gamma<\aleph_\alpha$, temos que $2^{\aleph_\gamma}=\aleph_{\gamma+1}\leq\aleph_\alpha$, portanto $2^{|\delta|}\leq\aleph_\alpha$, para todo $\delta<\omega_\alpha$, logo
+    $$|B|\leq\sum_{\delta<\omega_\alpha}2^{|\delta|}\leq\sum_{\delta<\omega\alpha}\aleph_\alpha=\aleph_\alpha\cdot\aleph_\alpha=\aleph_\alpha$$
+\end{proof}
+
+Provaremos uma fórmula similar, mas mais complicada, para exponenciação de cardinais singulares.
+
+\begin{theorem}
+    \textbf{(GHC)} Se $\aleph_\alpha$ é um cardinal singular, então
+    $$\aleph_\alpha^{\aleph_\beta}=\begin{cases}
+        \aleph_\alpha,\text{ se }\aleph_\beta<\cf\rp{\aleph_\alpha},\\
+        \aleph_{\alpha+1},\text{ se }\cf\rp{\aleph_\alpha}\leq\aleph_\beta\leq\aleph_\alpha,\\
+        \aleph_{\beta+1},\text{ se }\aleph_\beta\geq\aleph_\alpha
+    \end{cases}$$
+\end{theorem}
+
+Esquematicamente, obtemos que
+
+\begin{center}
+\tikzset{every picture/.style={line width=0.75pt}}
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+\draw    (100,121) -- (554,121) ;
+\draw [shift={(556,121)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+\draw    (230.5,112.75) -- (230.5,129) ;
+\draw    (400.5,112.25) -- (400.5,128.5) ;
+\draw (205.5,133.9) node [anchor=north west][inner sep=0.75pt]    {$cf( \aleph _{\alpha })$};
+\draw (390,134.9) node [anchor=north west][inner sep=0.75pt]    {$\aleph _{\alpha }$};
+\draw (275.5,41.4) node [anchor=north west][inner sep=0.75pt]    {$f( \aleph _{\beta }) =\aleph _{\alpha }^{\aleph _{\beta }}$};
+\draw (151,93.9) node [anchor=north west][inner sep=0.75pt]    {$\aleph _{\alpha }$};
+\draw (301,93.9) node [anchor=north west][inner sep=0.75pt]    {$\aleph _{\alpha +1}$};
+\draw (458,93.9) node [anchor=north west][inner sep=0.75pt]    {$\aleph _{\beta +1}$};
+\end{tikzpicture}
+\end{center}
+
+\begin{proof}
+    Se $\beta\geq\alpha$, então $\aleph_\beta\geq\aleph_\alpha$ e $\aleph_\alpha^{\aleph_\beta}=2^{\aleph_\beta}=\aleph_{\beta+1}$. Se $\aleph_\beta<\cf\rp{\aleph_\alpha}$, então todo $X\subseteq\omega_\alpha$ tq $|X|=\aleph_\beta<\cf\rp{\aleph_\alpha}<\aleph_\alpha$ é limitado em $\omega_\alpha$ e, portanto, pelo mesmo argumento que no Teorema anterior obtemos que $\aleph_\alpha^{\aleph_\beta}=\aleph_\alpha$. Seja então $\cf\rp{\aleph_\alpha}\leq\aleph_\beta\leq\aleph_\alpha$. Por um lado
+    \begin{equation}\tag{$\dagger$}
+    \aleph_\alpha\leq\aleph_\alpha^{\aleph_\beta}\leq\aleph_\alpha^{\aleph_\alpha}=2^{\aleph_\alpha}=\aleph_{\alpha+1}
+    \end{equation}
+    Por outro, pelo Corolário 5.1. $\cf\rp{\aleph_\alpha^{\aleph_\beta}}>\aleph_\beta$ e, como $\aleph_\beta\geq\cf\rp{\aleph_\alpha}$, então $\cf\rp{\aleph_\alpha^{\aleph_\beta}}\neq\cf\rp{\aleph_\alpha}$, portanto $\aleph_\alpha^{\aleph_\beta}\neq\aleph_\alpha$. Com isso, temos que $(\dagger)$ garante que $\aleph_\alpha^{\aleph_\beta}=\aleph_{\alpha+1}$.
+\end{proof}
+
+\subsection{Fórmula de Hausdorff}
+
+Se não assumirmos a GHC a situação fica bem mais complicada. Em particular, conseguimos provar o seguinte Teorema
+
+\begin{theorem}
+    \textbf{(Fórmula de Hausdorff)} Para quaisquer ordinais $\alpha$ e $\beta$ vale que
+    $$\aleph_{\alpha+1}^{\aleph_\beta}=\aleph_\alpha^{\aleph_\beta}\cdot\aleph_{\alpha+1}$$
+\end{theorem}
+
+\begin{proof}
+    Se $\beta\geq\alpha+1$, então $\aleph_{\alpha+1}^{\aleph_\beta}=2^{\aleph_\beta}=2^{\aleph_\beta}\cdot\aleph_{\alpha+1}=\aleph_\alpha^{\aleph_\beta}\cdot\aleph_{\alpha+1}$, visto que $\aleph_{\alpha+1}\leq\aleph_\beta\leq2^{\aleph_\beta}$. Seja portanto $\beta\leq\alpha$, como $\aleph_\alpha^{\aleph_\beta}\leq\aleph_{\alpha+1}^{\aleph_\beta}$ e $\aleph_{\alpha+1}\leq\aleph_{\alpha+1}^{\aleph_\beta}$, então $\aleph_\alpha^{\aleph_\beta}\cdot\aleph_{\alpha+1}\leq\aleph_{\alpha+1}^{\aleph_\beta}\cdot\aleph_{\alpha+1}^{\aleph_\beta}=\aleph_{\alpha+1}^{\aleph_\beta}$. Logo, basta mostrarmos que $\aleph_{\alpha+1}^{\aleph_\beta}\leq\aleph_\alpha^{\aleph_\beta}\cdot\aleph_{\alpha+1}$. Como $\omega_\beta<\omega_{\alpha+1}$ e $\omega_{\alpha+1}$ é regular, então para qualquer $f:\omega_\beta\to\omega_{\alpha+1}$, $f$ é limitada, i.e., existe $\gamma<\omega_{\alpha+1}$ tq $f(\xi)<\gamma$, para todo $\xi<\omega_\beta$. Com isso
+    $$\omega_{\alpha+1}^{\omega_\beta}=\bigcup_{\gamma<\omega_{\alpha+1}}\gamma^{\omega_\beta}$$
+    Agora, todo $\gamma<\omega_{\alpha+1}$ é tal que $|\gamma|\leq\aleph_\alpha$ e, como $\left|\bigcup_{\gamma<\omega_{\alpha+1}}\gamma^{\omega_\beta}\right|\leq\sum_{\gamma<\omega_{\alpha+1}}|\gamma|^{\aleph_\beta}$, então
+    $$\aleph_{\alpha+1}^{\aleph_\beta}\leq\sum_{\gamma<\omega_{\alpha+1}}|\gamma|^{\aleph_\beta}\leq\sum_{\gamma<\omega_{\alpha+1}}\aleph_\alpha^{\aleph_\beta}=\aleph_{\alpha}^{\aleph_\beta}\cdot\aleph_{\alpha+1}$$
+\end{proof}
+
+\end{document}
