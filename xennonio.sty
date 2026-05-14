@@ -7,19 +7,43 @@
 \usepackage{empheq}
 \usepackage{framed}
 \usepackage[most]{tcolorbox}
-\usepackage{hyperref}
+\usepackage{hyperref} %% to use texorpdfstring
+\usepackage{cleveref}
 \definecolor{todonotes}{RGB}{220, 6, 90}
 \usepackage[color=todonotes, textcolor=white]{todonotes}
 \usepackage[Conny]{fncychap}
 \usepackage{enumitem}
+
+%% asymptote
+\usepackage{asymptote}
+\begin{asydef}
+usepackage("amsfonts");
+usepackage("bm");
+\end{asydef}
+
+%% code to use cleveref with tcolorbox
+\makeatletter
+    \crefname{tcb@cnt@theorem}{theorem}{theorems}
+    \Crefname{tcb@cnt@theorem}{Theorem}{Theorems}
+    
+    \crefname{tcb@cnt@definition}{definition}{definitions}
+    \Crefname{tcb@cnt@definition}{Definition}{Definitions}
+
+    \crefname{tcb@cnt@corollary}{corollary}{corollaries}
+    \Crefname{tcb@cnt@corollary}{Corollary}{Corollaries}
+    
+    \crefname{tcb@cnt@lemma}{lemma}{lemmas}
+    \Crefname{tcb@cnt@lemma}{Lemma}{Lemmas}
+\makeatother
 
 %% -- Pagestyle --
 \setlength{\parskip}{0.05in} %% space between paragraphs
 \colorlet{shadecolor}{orange!15}
 \parindent 0in %% no paragraph indentation
 \geometry{margin=1in} %% page margin
+\ChTitleAsIs %% not upper titles
 
-%% Macros
+%% -- Macros --
 \newcommand{\mc}[1]{\mathcal{#1}}
 \newcommand{\mf}[1]{\mathfrak{#1}}
 \newcommand{\mbb}[1]{\mathbb{#1}}
@@ -29,11 +53,14 @@
 \DeclareMathOperator{\cf}{cf}
 \renewcommand{\figurename}{Fig.}
 \renewcommand{\contentsname}{Summary}
+\counterwithout{equation}{chapter}
 
-%% Environments
+%% -- Environments --
+%% lorelei and the laser eyes colors
 \definecolor{lorelei}{RGB}{120, 4, 56}
 \definecolor{laser_eyes}{RGB}{220, 6, 90}
 
+%% theorems style
 \NewTcbTheorem[number within=chapter]{theorem}{Theorem}{
     enhanced,
     colback=laser_eyes!10,
@@ -42,23 +69,26 @@
     title style={
         left color=black!15!lorelei,
         right color=laser_eyes!85!black
-        }
+        },
 }{th}
 
+%% definitions style
 \NewTcbTheorem[number within=chapter]{definition}{Definition}{
     colback=gray!5,
     colframe=gray!80!black,
-    fonttitle=\bfseries
+    fonttitle=\bfseries,
 }{def}
 
+%% lemmas style
 \NewTcbTheorem[number within=chapter]{lemma}{Lemma}{
     colback=gray!5,
     colframe=gray!30!black,
-    fonttitle=\bfseries
+    fonttitle=\bfseries,
 }{lem}
 
+%% corollaries style
 \NewTcbTheorem[number within=chapter]{corollary}{Corollary}{
     colback=gray!5,
     colframe=gray!55!black,
-    fonttitle=\bfseries
+    fonttitle=\bfseries,
 }{cor}

@@ -1,0 +1,61 @@
+\chapter{Motivation}
+
+\section{Classical Examples}
+
+Consider the following theorems:
+
+\begin{tcolorbox}[colback=gray!5,colframe=gray!80!black]
+    \begin{itemize}[leftmargin=*, nosep]
+    \item The finite union of finite sets is finite, i.e., if $S$ is a system of sets such that $|S|<\omega_0$ and, for all $A\in S$, we have $|A|<\omega_0$, then
+    $$\left|\bigcup S\right|<\omega_0$$
+    \item Similarly, the countable union of countable sets is countable, i.e., if $S$ is a system of sets such that $|S|<\omega_1$ and, for all $A\in S$, we have $|A|<\omega_1$, then
+    $$\left|\bigcup S\right|<\omega_1$$
+    \end{itemize}
+\end{tcolorbox}
+
+In both cases, the key takeaway is that it’s difficult to ``reach'' $\aleph_0$ and $\aleph_1$, respectively, ``from below''. This phenomenon can be formally understood through the concept of \textit{cofinality}.
+
+To generalize, consider the following question: we know that any limit ordinal is the supremum of the set of all smaller ordinals. In particular, for any limit ordinal $\lambda$
+$$\lambda=\bigcup\lambda$$
+However, we don’t necessarily need to take \textit{all} smaller ordinals. It’s possible to find a proper subset $S$ of $\lambda$ such that $\lambda=\sup(S)$. How small can $S$ be? This is the concept we aim to explore.
+
+\section{Definition of Cofinality}
+
+\begin{definition}{Cofinality}{cofinality}
+    We will define $\cf(\alpha)$, the \textcolor{laser_eyes!80!black}{cofinality} of $\alpha$, with $\alpha$ a limit ordinal, as the smallest ordinal $\vartheta$ such that $\alpha$ is the limit of an increasing transfinite sequence $\langle\alpha_\nu:\nu<\vartheta\rangle$ of length $\vartheta$, i.e.
+    $$\alpha=\lim_{\nu\to\vartheta}\alpha_\nu$$
+\end{definition}
+
+Equivalently, making easier to visualize the relation between this with the discussion above, $\cf(\alpha)$ is the smaller ordinal $\beta$ such that exists $f:\beta\to\alpha$, satisfying
+$$\alpha=\bigcup_{\nu<\beta}f(\nu)=\bigcup\mathrm{Im}(f)$$
+i.e., $\cf(\alpha)$ is the smaller ordinal $\beta$ such that there exists a union of $\beta$ elements $\alpha_\nu$ less than $\alpha$.
+
+\section{Regular and Singular Cardinals}
+
+We can now define two types of cardinals, $\kappa$: those that can be written as a union of $\kappa$ smaller elements, called singular, and those that cannot, called regular. More formally:
+
+\begin{definition}{Regular and Singular Cardinal}{regular_singular}
+    An infinite cardinal $\kappa$ is \textcolor{laser_eyes!80!black}{singular} iff there exists an increasing transfinite sequence $\langle\alpha_\nu:\nu<\vartheta\rangle$ of ordinals $\alpha_\nu<\kappa$ where the length $\vartheta$ is a limit ordinal less than $\kappa$, such that
+    $$\kappa=\lim_{\nu\to\vartheta}\alpha_\nu$$
+    An infinite cardinal that is not singular is called \textcolor{laser_eyes!80!black}{regular}.
+\end{definition}
+
+Alternatively, we can define these cardinals more concretely using the following lemma:
+
+\begin{lemma}{}{singular_characterization}
+    An infinite cardinal $\kappa$ is singular if, and only if, it's the sum of fewer than $\kappa$ smaller cardinals, i.e.
+    $$\kappa=\sum_{i\in I}\kappa_i$$
+    where $|I|<\kappa$ and $\kappa_i<\kappa$, for all $i\in I$.
+\end{lemma}
+
+\begin{proof}
+    \todo{review}$(\Rightarrow)$ If $\kappa$ is singular, then $\kappa=\lim_{\nu\to\vartheta}\alpha_\nu$ for some increasing transfinite sequence with $\alpha_\nu<\kappa$ and $\vartheta<\kappa$. Since all ordinal is the set of all smaller ordinals, then
+    $$\kappa=\bigcup_{\nu<\vartheta}\alpha_\nu=\bigcup_{\nu<\vartheta}\rp{\alpha_\nu\backslash\bigcup_{\xi<\nu}\alpha_\xi}$$
+    defining $A_\nu:=\alpha_\nu\backslash\bigcup_{\xi<\nu}\alpha_\xi$, we have that $\langle A_\nu:\nu<\vartheta\rangle$ is a sequence of length less than $\kappa$ with disjoint sets of cardinality $\kappa_\nu=|A_\nu|=\left|\alpha_\nu\backslash\bigcup_{\xi<\nu}\alpha_\xi\right|\leq|\alpha_\nu|<\kappa$, hence
+    $$\kappa=\sum_{\nu<\vartheta}\kappa_\nu$$
+    
+    $(\Leftarrow)$ Let's assume that $\kappa=\sum_{\alpha<\lambda}\kappa_\alpha$, with $\lambda,\kappa_\alpha<\kappa$, for all $\alpha<\lambda$. Therefore
+    $$\kappa=\sum_{\alpha<\lambda}\kappa_\alpha=\lambda\cdot\sup_{\alpha<\lambda}\kappa_\alpha$$ and, since $\lambda<\kappa$, then necessarily $\kappa=\sup_{\alpha<\lambda}\kappa_\alpha$, because, otherwise, $\kappa=\lambda$, a contradiction. Then $\kappa$ is the supremum of the image of the transfinite sequence $\langle\kappa_\alpha:\alpha<\lambda\rangle$, hence, it's easy to find an increasing subsequence with limit $\kappa$.
+\end{proof}
+
+Note that such characterization captures well the idea discussed at motivation. We can relate it to the concept of cofinality as follows: it's expected and easy to verify that, if $\kappa$ is a singular cardinal, then $\cf(\kappa)<\kappa$, i.e., there is an increasing sequence of length smaller than $\kappa$ with elements smaller than $\kappa$, but which has $\kappa$ as a limit and, if $\kappa$ is regular, since $\cf(\kappa)\leq\kappa$, we have that $\cf(\kappa)=\kappa$.
