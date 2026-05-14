@@ -1,5 +1,5 @@
 # Notes on Cofinality
-This repository contains the entire LaTeX draft of my notes on cofinality.
+This repository contains my entire LaTeX project of my personal notes on cofinality.
 
 ## Pdf File
 The compiled version of these notes is available [here](https://raw.githubusercontent.com/Xennonio/Cofinality/main/Cofinality.pdf).
