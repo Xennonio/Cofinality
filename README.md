@@ -2,6 +2,7 @@
 This repository contains the entire LaTeX draft of my notes on cofinality.
 
 ## Pdf File
+The compiled version of these notes is available [here](https://raw.githubusercontent.com/Xennonio/Cofinality/main/Cofinality.pdf).
 
 ## About the Notes
 These notes aim to introduce the concept of cofinality, offering the motivations and intuitions behind it. The initial chapters consist primarily in results and examples that explore the idea of cofinality, showing how it naturally arises and examining its key properties.
