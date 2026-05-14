@@ -1,0 +1,13 @@
+# Notes on Cofinality
+This repository contains the entire LaTeX draft of my notes on cofinality.
+
+## Pdf File
+
+## About the Notes
+These notes aim to introduce the concept of cofinality, offering the motivations and intuitions behind it. The initial chapters consist primarily in results and examples that explore the idea of cofinality, showing how it naturally arises and examining its key properties.
+
+From there on, almost everything presented can be found in Jech's book - Introduction to Set Theory, all I will do here is a comprehensive and filtered summary, along with some of my own intuitions that may be useful to someone, and some additional comments on things I've found elsewhere.
+
+Notably, the concept of cofinality leads us directly to the Large Cardinal Axioms. We will explore how weakly inaccessible cardinals emerge by addressing a fundamental question in the study of regular and singular cardinals: ``does there exist an uncountable regular limit cardinal?''
+
+It is important to note that these notes assume the reader has some familiarity with the basics of cardinal and ordinal arithmetic to fully understand the proofs of the theorems. However, even without this background, readers can still grasp the underlying intuition by skipping the proofs and following the comments and ramblings throughout the text, which, hopefully, will at least guides you through a natural exploration of the defined concepts.
