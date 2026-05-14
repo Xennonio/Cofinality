@@ -1,0 +1,64 @@
+%% -- Packages --
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\usepackage{thmtools}
+\usepackage{mathrsfs}
+\usepackage{cancel}
+\usepackage[margin=3cm]{geometry}
+\usepackage{empheq}
+\usepackage{framed}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\definecolor{todonotes}{RGB}{220, 6, 90}
+\usepackage[color=todonotes]{todonotes}
+\usepackage[Conny]{fncychap}
+\usepackage{enumitem}
+
+%% -- Pagestyle --
+\setlength{\parskip}{0.05in} %% space between paragraphs
+\colorlet{shadecolor}{orange!15}
+\parindent 0in %% no paragraph indentation
+\geometry{margin=1in} %% page margin
+
+%% Macros
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mbb}[1]{\mathbb{#1}}
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\rp}[1]{{\left(#1\right)}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\DeclareMathOperator{\cf}{cf}
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\contentsname}{Summary}
+
+%% Environments
+\definecolor{lorelei}{RGB}{120, 4, 56}
+\definecolor{laser_eyes}{RGB}{220, 6, 90}
+
+\NewTcbTheorem[number within=chapter]{theorem}{Theorem}{
+    enhanced,
+    colback=laser_eyes!10,
+    colframe=lorelei,
+    fonttitle=\bfseries,
+    title style={
+        left color=black!15!lorelei,
+        right color=laser_eyes!85!black
+        }
+}{th}
+
+\NewTcbTheorem[number within=chapter]{definition}{Definition}{
+    colback=gray!5,
+    colframe=gray!80!black,
+    fonttitle=\bfseries
+}{def}
+
+\NewTcbTheorem[number within=chapter]{lemma}{Lemma}{
+    colback=gray!5,
+    colframe=gray!30!black,
+    fonttitle=\bfseries
+}{lem}
+
+\NewTcbTheorem[number within=chapter]{corollary}{Corollary}{
+    colback=gray!5,
+    colframe=gray!55!black,
+    fonttitle=\bfseries
+}{cor}
