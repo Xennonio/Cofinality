@@ -31,8 +31,10 @@ Note that $C$ being closed in $\kappa$ is equivalent to say that every sequence 
     where $\alpha_n\in C_1$ and $\beta_n\in C_2$, for $n\in\omega$. In fact, they exists, since $C_1$ and $C_2$ are unbounded, and their supremum $\delta$ is the same. Now, since $C_1$ and $C_2$ are also closed, we know $\delta\in C_1\cap C_2$.
 \end{proof}
 
-The previous lemma guarantees us the set of all clubs generates a filter, called \textcolor{laser_eyes!80!black}{the club filter} on $\kappa$:
-$$F=\{X\subseteq\kappa:X\supseteq C\text{ for some club }C\}$$
+The previous lemma guarantees us the set of all clubs generates a filter, called \textcolor{laser_eyes!80!black}{the club filter} on $\kappa$
+\begin{equation}\label{eq:club_filter}
+    \mathrm{club}(\kappa):=\{X\subseteq\kappa:X\supseteq C\text{ for some club }C\}
+\end{equation}
 In fact, such filter is $\kappa$-complete, which follows from the next lemma
 
 \begin{lemma}{}{club_k_complete}
@@ -128,7 +130,7 @@ First note that, until now, we saw every club is stationary, and then that every
 As another application, we will prove a really famous theorem\footnote{Although it's called lemma, which we will in fact state as a corollary xD.} in combinatorial set theory, known as the $\Delta$-System Lemma. In particular, it's really important when proving some Forcing Notions are in fact ccc. Let's first define a $\Delta$-system.
 
 \begin{definition}{}{delta_system}
-    A family of sets $\mc{A}$ forms a $\Delta$-system with root $R$ if, and only if, $X\cap Y=R$, whenever $X,Y\in\mc{A}$, with $X\neq Y$.
+    A family of sets $\mc{A}$ forms a \textcolor{laser_eyes!80!black}{$\Delta$-system with root $R$} if, and only if, $X\cap Y=R$, whenever $X,Y\in\mc{A}$, with $X\neq Y$.
 \end{definition}
 
 We also say $\mc{B}$ forms a $\Delta$-system, if there is a set $R$ such that $\mc{B}$ is a $\Delta$-system with root $R$.
@@ -138,9 +140,7 @@ We also say $\mc{B}$ forms a $\Delta$-system, if there is a set $R$ such that $\
 \end{corollary}
 
 \begin{proof}
-    We may assume WLOG that $\mc{A}\subseteq[\kappa]^{<\omega}$. Since every set in $\mc{A}$ is finite, and we have $\kappa$-many of those, by Pigeonhole we can find $\kappa$ of them $\{A_\alpha:\alpha<\kappa\}$ of the same size $n\in\omega$.
-    
-    \todo{todo}
+    We may assume WLOG that $\mc{A}\subseteq[\kappa]^{<\omega}$. Since every set in $\mc{A}$ is finite, and we have $\kappa$-many of those, by Pigeonhole we can find $\kappa$ of them $\{A_\alpha:\alpha<\kappa\}$ of the same size $n\in\omega$\todo{todo}...
 \end{proof}
 
 \section{Silver's Theorem}
@@ -151,10 +151,6 @@ Let's now prove the main theorem of this section. Roughly, it says that if GCH h
     Let $\aleph_\lambda$ be a singular cardinal, with $\cf(\lambda)>\omega$. If $2^{\aleph_\alpha}=\aleph_{\alpha+1}$, for every $\alpha<\lambda$, then
     $$2^{\aleph_\lambda}=\aleph_{\lambda+1}$$
 \end{theorem}
-
-Now, if $\lambda$ itself is not singular, 
-
-\todo{different statement in the general case}
 
 In order to prove it, we will first prove a series of lemmas needed to show Silver's result.
 
@@ -173,21 +169,63 @@ It's easy to see that, under GCH, the concept of a limit cardinal matches with t
     where in the inequality we used \cref{lem:card_exp_a_leq_b}.
 \end{proof}
 
-Throughout this section, we will fix a $\lambda$ as in Silver's Theorem, and let $\kappa=\cf(\lambda)$. Then, by the previous Lemma, we can conclude that 
+\textcolor{laser_eyes!80!black}{Throughout this section, we will fix a $\lambda$ as in Silver's Theorem, and let $\kappa=\cf(\lambda)<\lambda$}. Then, by the previous Lemma, we can conclude the following, which we will use extensively from now on
 
-\todo{todo}
+\begin{equation}\label{eq:silver_aux_eq}
+    2^\kappa<\aleph_\lambda\text{ and }\aleph_\alpha^\kappa<\aleph_\lambda\text{, for every }\alpha<\lambda.
+\end{equation}
+
+\begin{definition}{}{almost_disjoint}
+    Two functions $f,g$ on $\kappa$ are \textcolor{laser_eyes!80!black}{almost disjoint} if there is some $\alpha<\kappa$ such that $f(\beta)\neq g(\beta)$, for all $\beta\geq\alpha$.
+\end{definition}
+
+We can now state our second lemma.
 
 \begin{lemma}{}{fodor_aux1}
-    Let $\{A_\alpha:\alpha<\kappa\}$ be a family such that $\lvert A_\alpha\rvert\leq\aleph_\alpha$ for every $\alpha<\kappa$. If $F$ is a family of almost disjoint choice functions for the family, then $\lvert F\rvert\leq\aleph_\kappa$.
+    Let $\{A_\alpha:\alpha<\kappa\}$ be a family such that $T=\{\alpha<\kappa:\lvert A_\alpha\rvert\leq\aleph_\alpha\}$ is stationary. If $F$ is a collection of almost disjoint choice functions for the family, then $\lvert F\rvert\leq\aleph_\lambda$.
 \end{lemma}
 
 \begin{proof}
-    We can assume WLOG that $A_\alpha\subseteq\omega_\alpha$. Let $S_0$ be the set of all limit ordinals between $0$ and $\kappa$. Given $f\in F$ and $\alpha\in S_0$, let $f^*(\alpha)$ be the least $\beta$ such that $f(\alpha)<\omega_\beta$.
+    We can assume WLOG that $A_\alpha\subseteq\omega_\alpha$. Let $S_0$ be the set of all nonzero limit ordinals in $T$. Given $f\in F$ and $\alpha\in S_0$, let $g(\alpha)$ be the least $\beta$ such that $f(\alpha)<\omega_\beta$.
 
-    Since $f(\alpha)\in A_\alpha\subseteq\omega_\alpha$, we have $f(\alpha)<\omega_\alpha$ and, since $\alpha$ is a limit ordinal, then $f(\alpha)<\omega_\beta$, for some $\beta<\alpha$. This implies that $f^*(\alpha)<\alpha$, i.e., it's a regressive function. Since $S_0$ is stationary, by Fodor's Lemma there is some stationary $S\subseteq S_0$ such that $f^*\restriction_S$ is constant, let's say in $\beta$. Then $f\restriction_S$ is a function from $S\subseteq\kappa$ to $\omega_\beta<\omega_\kappa$. Note that both $S$ and $\beta$ depends on $f$.
+    Since $f(\alpha)\in A_\alpha\subseteq\omega_\alpha$, we have $f(\alpha)<\omega_\alpha$ and, since $\alpha$ is a limit ordinal, then $f(\alpha)<\omega_\beta$, for some $\beta<\alpha$. This implies that $g(\alpha)<\alpha$, i.e., it's a regressive function. Since $S_0$ is stationary, by Fodor's Lemma there is some stationary $S\subseteq S_0$ such that $g\restriction_S$ is constant, let's say in $\beta$. Then $f\restriction_S$ is a function from $S\subseteq\kappa$ to $\omega_\beta<\omega_\kappa$. Note that both $S$ and $\beta$ depends on $f$.
 
     Now, consider the function $\varphi$ that takes some $f\in F$ and return exactly that $f\restriction_S:S\to\omega_\beta$. Then
     $$\varphi:F\to\bigcup_{S\subseteq\kappa}\rp{\bigcup_{\beta<\kappa}\omega_\beta^S}$$
     We claim $\varphi$ is injective. In fact, if $f\neq g$, even if $\varphi(f)$ and $\varphi(g)$ have the same domain $S$, since they're almost disjoint, there is some $\alpha<\kappa$ such that $f(\beta)\neq g(\beta)$ for every $\beta\geq\alpha$. But since $S$ is stationary, there is some $\gamma>\alpha$ in it, so $\varphi(f)(\gamma)\neq\varphi(g)(\gamma)$. Then, since $\varphi$ is injective,
-    $$\lvert F\rvert\leq\sum_{S\subseteq\kappa}\sum_{\beta<\kappa}\omega_\beta^{\lvert S\rvert}\leq 2^\kappa\sum_{\beta<\kappa}\omega_\beta^\kappa$$
+    $$\lvert F\rvert\leq\sum_{S\subseteq\kappa}\sum_{\beta<\kappa}\aleph_\beta^{\lvert S\rvert}\leq 2^\kappa\sum_{\beta<\kappa}\aleph_\beta^\kappa\leq\aleph_\lambda$$
+    where in the last inequality we used \cref{eq:silver_aux_eq}.
+\end{proof}
+
+We can now state our main lemma to prove Silver's Theorem.
+
+\begin{lemma}{}{fodor_aux2}
+    Let $\{A_\alpha:\alpha<\kappa\}$ be a family such that $T=\{\alpha<\kappa:\lvert A_\alpha\rvert\leq\aleph_{\alpha+1}\}$ is stationary. If $F$ is a collection of almost disjoint choice functions for the family, then $\lvert F\rvert\leq\aleph_{\lambda+1}$.
+\end{lemma}
+
+\begin{proof}
+    Let $U$ be an ultrafilter extending the club filter (as defined in (\ref{eq:club_filter})). As in the previous lemma, let's assume $A_\alpha\subseteq\omega_{\alpha+1}$, and let's define the relation $<$ on $F$ induced by $U$ as follows:
+    $$f<g\iff \{\alpha<\kappa:f(\alpha)<g(\alpha)\}\in U$$
+    We claim $(F,<)$ is a linear order. In fact, if $f<g$ and $g<h$, then
+    $$\{\alpha<\kappa:f(\alpha)<h(\alpha)\}\supseteq\{\alpha<\kappa:f(\alpha)<g(\alpha)\}\cap\{\alpha<\kappa:g(\alpha)<h(\alpha)\}$$
+    Since $U$ is a filter, the RHS is in it, and since it's complete, and we can't have the LHS outside of it, then it's also in $U$, so $f<h$ and $<$ is transitive.
+
+    Now, if $f\neq g$, since they're almost disjoint we have $\{\alpha<\kappa:f(\alpha)=g(\alpha)\}$ bounded, so it's not in $U$, meaning that either $\{\alpha<\kappa:f(\alpha)<g(\alpha)\}$ or $\{\alpha<\kappa:g(\alpha)<f(\alpha)\}$ is in $U$, i.e., $<$ satisfies trichotomy. This concludes it's a linear ordering on $F$.
+
+    Now, note that every $S\in U$ is stationary, since otherwise $S\cap C=\emptyset$ would be in $U$ for some club $C$. Hence, if $f,g\in F$ and $g<f$, then $g\in F_f$, where
+    $$F_f=\{g\in F:\text{for some stationary }T,\; g(\alpha)<f(\alpha)\text{ for all }\alpha\in T\}$$
+    Note that we have
+    $$F_f\subseteq\bigcup_{T\subseteq\kappa}\{g\in F:g(\alpha)<f(\alpha)\text{ for all }\alpha\in T\}$$
+    let's estimate the RHS. In fact, each $\{g\in F:g(\alpha)<f(\alpha)\text{ for all }\alpha\in T\}\subseteq\prod_{\alpha<\kappa}B_\alpha$ is such that $g(\alpha)<f(\alpha)<\omega_{\alpha+1}$ for $\alpha\in T$, then we can let $B_\alpha=f(\alpha)$ and then $\lvert B_\alpha\rvert\leq\aleph_\alpha$, i.e., we're under the hypothesis of the previous lemma. So we can conclude that each term in the union has size at most $\aleph_\lambda$, therefore
+    $$\lvert F_f\rvert\leq\sum_{T\subseteq\kappa}\aleph_\lambda=2^\kappa\cdot \aleph_\lambda=\aleph_\lambda$$
+    where, again, we used \cref{eq:silver_aux_eq}. We then have $(F,<)$ a linear order whose initial segments has all cardinality at most $\aleph_\lambda$, which implies\footnote{In general, under AC, if $\lvert\mathrm{pred}(a)\rvert<\aleph_\gamma$, for every $a$ in a linear ordered set $A$, then $\lvert A\rvert\leq\aleph_\gamma$.} $\lvert F\rvert\leq\aleph_{\lambda+1}$.
+\end{proof}
+
+And now we can finally prove Silver's Theorem.
+
+\begin{proof}
+    Let $A_\alpha=\mc{P}(\omega_\alpha)$, for $\alpha<\kappa$. By hypothesis $\lvert A_\alpha\rvert=2^{\aleph_\alpha}=\aleph_{\alpha+1}$. Now, for each $X\subseteq\omega_\lambda$, let $f_X$ be a choice function defined in the family $\{A_\alpha:\alpha<\kappa\}$ as follows
+    $$f_X(\alpha)=X\cap\omega_\alpha$$
+    In fact, if $X\neq Y$, we can get the witnesses at some stage $\omega_\alpha$, and then $f_X(\beta)\neq f_Y(\beta)$ for all $\beta\geq\alpha$, then $F=\{f_X:X\in\mc{P}(\omega_\lambda)\}$ is a family of almost disjoint functions. By the previous lemma
+    $$\aleph_\lambda<2^{\aleph_\lambda}=\lvert F\rvert\leq\aleph_{\lambda+1}\implies 2^{\aleph_\lambda}=\aleph_{\lambda+1}$$
 \end{proof}

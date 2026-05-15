@@ -1,6 +1,6 @@
 \chapter{Cardinals Exponentiation}
 
-While addition and multiplication of cardinals is very simple, since
+While addition and multiplication of cardinals are very simple, since
 $$\aleph_\alpha+\aleph_\beta=\aleph_\alpha\cdot\aleph_\beta=\max\{\aleph_\alpha,\aleph_\beta\}$$
 exponentiation is way more complex.
 
@@ -78,11 +78,11 @@ Notice how we didn't use anything special about $2$, and then we can repeat the 
 
 \subsection{Digression on Exponentiation for Singular Cardinals}
 
-As we saw, the inequalities above are the only ones we can prove about regular cardinals, the next natural step is to ask if there is a generalization, or some similar result about singular cardinals. In fact, for singular cardinals $\kappa$, various additional constraints in the behavior of $2^\kappa$ are known.
+As we saw\footnote{Actually we didn't saw the proof, so you can rather believe me xD or check my \href{https://github.com/Xennonio/Consistency-Results}{Consistency Results} notes to see a complete proof of Easton's Theorem.}, the inequalities above are the only ones we can prove about regular cardinals, the next natural step is to ask if there is a generalization, or some similar result about singular cardinals. In fact, for singular cardinals $\kappa$, various additional constraints in the behavior of $2^\kappa$ are known.
 
 By know, the most interesting one is Silver's Theorem, since it implies that Easton's Theorem can't be extended to include singular cardinals. But, nowadays, Shelah's work on PCF Theory gives a lot of results on the possible values of $2^\kappa$, for $\kappa$ singular. It shows that such values are strongly influenced by the values on smaller cardinals, as we will see next and when proving Silver's Theorem, whereas Easton shows this is not the case for regular cardinals.
 
-\begin{lemma}{}{baby_silver}
+\begin{lemma}{Baby Silver's Theorem}{baby_silver}
     Let $\aleph_\alpha$ be a singular cardinal, if $2^{\aleph_\xi}=\aleph_\beta$ for all $\xi<\alpha$, then $2^{\aleph_\alpha}=\aleph_\beta$.
 \end{lemma}
 
@@ -115,7 +115,7 @@ The next natural step is trying to calculate $\aleph_\alpha^{\aleph_\beta}$ for 
 \end{lemma}
 
 \begin{proof}
-    \todo{review}Since $|\omega_\alpha\times\omega_\beta|=\aleph_\alpha\cdot\aleph_\beta=\aleph_\alpha=|\omega_\alpha|$, then $\left|[\omega_\alpha\times\omega_\beta]^{\aleph_\beta}\right|=\left|[\omega_\alpha]^{\aleph_\beta}\right|$. Now, every function $f:\omega_\beta\to\omega_\alpha$ is in $[\omega_\alpha\times\omega_\beta]^{\aleph_\beta}$, therefore $\omega_\alpha^{\omega_\beta}\subseteq[\omega_\alpha\times\omega_\beta]^{\aleph_\beta}$ and so
+    Since $|\omega_\alpha\times\omega_\beta|=\aleph_\alpha\cdot\aleph_\beta=\aleph_\alpha=|\omega_\alpha|$, then $\left|[\omega_\alpha\times\omega_\beta]^{\aleph_\beta}\right|=\left|[\omega_\alpha]^{\aleph_\beta}\right|$. Now, every function $f:\omega_\beta\to\omega_\alpha$ is in $[\omega_\alpha\times\omega_\beta]^{\aleph_\beta}$, therefore $\omega_\alpha^{\omega_\beta}\subseteq[\omega_\alpha\times\omega_\beta]^{\aleph_\beta}$ and so
     $$\left|\omega_\alpha^{\omega_\beta}\right|=\aleph_\alpha^{\aleph_\beta}\leq\left|[\omega_\alpha\times\omega_\beta]^{\aleph_\beta}\right|=\left|[\omega_\alpha]^{\aleph_\beta}\right|$$
     For the reverse inequality, if $X\in[\omega_\alpha]^{\aleph_\beta}$, then there is some $f$ in $\omega_b$ such that $\mathrm{Im}(f)=X$. With this, given a function $f_X$ for each $X\in[\omega_\alpha]^{\aleph_\beta}$, let $F(X)=f_X$. If $X\neq Y$, then $\mathrm{Im}(f_X)=X$ and $\mathrm{Im}(f_Y)=Y$, so $F(X)=f_X\neq f_Y=F(y)$, i.e., $F$ is injective, then
     $$\left|[\omega_\alpha]^{\aleph_\beta}\right|\leq\left|\omega_\alpha^{\omega_\beta}\right|=\aleph_\alpha^{\aleph_\beta}$$
@@ -136,7 +136,7 @@ Now, as a warmup, let's see what we got under the Generalized Continuum Hypothes
 \end{lemma}
 
 \begin{proof}
-    \todo{review}If $\alpha\leq\beta$, by \cref{lem:card_exp_a_leq_b} $\aleph_\alpha^{\aleph_\beta}=2^{\aleph_\beta}=\aleph_{\beta+1}$. Let then $\alpha>\beta$. If we let $S=[\omega_\alpha]^{\aleph_\beta}$, by \cref{lem:card_exp_a_leq_b} we have $|S|=\aleph_\alpha^{\aleph_\beta}$. In \cref{sec:weakly_inaccessible}, we saw $\cf(\kappa)$ can be interpreted as the least size of an unbounded set in $\kappa$. In particular, since $\cf(\aleph_\alpha)=\aleph_\alpha$ for regular cardinals, we know every $X\subseteq\omega_\alpha$, with $|X|<\aleph_\alpha$, is limited. Let then
+    If $\alpha\leq\beta$, by \cref{lem:card_exp_a_leq_b} $\aleph_\alpha^{\aleph_\beta}=2^{\aleph_\beta}=\aleph_{\beta+1}$. Let then $\alpha>\beta$. If we let $S=[\omega_\alpha]^{\aleph_\beta}$, by \cref{lem:card_exp_a_leq_b} we have $|S|=\aleph_\alpha^{\aleph_\beta}$. In \cref{sec:weakly_inaccessible}, we saw $\cf(\kappa)$ can be interpreted as the least size of an unbounded set in $\kappa$. In particular, since $\cf(\aleph_\alpha)=\aleph_\alpha$ for regular cardinals, we know every $X\subseteq\omega_\alpha$, with $|X|<\aleph_\alpha$, is limited. Let then
     $$B=\bigcup_{\delta<\omega_\alpha}\mc{P}(\delta)$$
     be the collection of all limited subsets of $\omega_\alpha$. We claim $|B|\leq\aleph_\alpha$; then, since $S\subset B$, we have $|S|=\aleph_\alpha^{\aleph_\beta}=\aleph_\alpha$, since clearly $|S|=\aleph_\alpha^{\aleph_\beta}\geq\aleph_\alpha$. From the definition of $B$ we have
     $$|B|\leq\sum_{\delta<\omega_\alpha}2^{|\delta|}$$
@@ -155,7 +155,7 @@ Let's now prove a similar, but more complicated, formula for singular cardinals.
     \end{cases}$$
 \end{lemma}
 
-Schematically, we obtain \cref{fig:singular_gch}.
+Schematically, we obtain \cref{fig:singular_gch}\footnote{where the eventual linearity and denseness are poetic license.}.
 
 \begin{figure}
 \centering
@@ -165,7 +165,7 @@ Schematically, we obtain \cref{fig:singular_gch}.
 \end{figure}
 
 \begin{proof}
-    \todo{review}If $\beta\geq\alpha$, then $\aleph_\beta\geq\aleph_\alpha$ and $\aleph_\alpha^{\aleph_\beta}=2^{\aleph_\beta}=\aleph_{\beta+1}$. If $\aleph_\beta<\cf\rp{\aleph_\alpha}$, then any $X\subseteq\omega_\alpha$ with $|X|=\aleph_\beta<\cf\rp{\aleph_\alpha}<\aleph_\alpha$ is bounded in $\omega_\alpha$ and, therefore, by the same argument as in the previous theorem, we have $\aleph_\alpha^{\aleph_\beta}=\aleph_\alpha$. Let then $\cf\rp{\aleph_\alpha}\leq\aleph_\beta\leq\aleph_\alpha$. On the one hand
+    If $\beta\geq\alpha$, then $\aleph_\beta\geq\aleph_\alpha$ and $\aleph_\alpha^{\aleph_\beta}=2^{\aleph_\beta}=\aleph_{\beta+1}$. If $\aleph_\beta<\cf\rp{\aleph_\alpha}$, then any $X\subseteq\omega_\alpha$ with $|X|=\aleph_\beta<\cf\rp{\aleph_\alpha}<\aleph_\alpha$ is bounded in $\omega_\alpha$ and, therefore, by the same argument as in the previous theorem, we have $\aleph_\alpha^{\aleph_\beta}=\aleph_\alpha$. Let then $\cf\rp{\aleph_\alpha}\leq\aleph_\beta\leq\aleph_\alpha$. On the one hand
     \begin{equation}\label{eq:aux_eq}
     \aleph_\alpha\leq\aleph_\alpha^{\aleph_\beta}\leq\aleph_\alpha^{\aleph_\alpha}=2^{\aleph_\alpha}=\aleph_{\alpha+1}
     \end{equation}
@@ -182,11 +182,11 @@ Lastly, let's see what we can do without GCH.
 \end{theorem}
 
 \begin{proof}
-    \todo{review}If $\beta\geq\alpha+1$, then, since $\aleph_{\alpha+1}\leq\aleph_\beta\leq2^{\aleph_\beta}$, we have
+    If $\beta\geq\alpha+1$, then, since $\aleph_{\alpha+1}\leq\aleph_\beta<2^{\aleph_\beta}$, we have, by \cref{lem:card_exp_a_leq_b}
     $$\aleph_{\alpha+1}^{\aleph_\beta}=2^{\aleph_\beta}=2^{\aleph_\beta}\cdot\aleph_{\alpha+1}=\aleph_\alpha^{\aleph_\beta}\cdot\aleph_{\alpha+1}$$
     Let then $\beta\leq\alpha$. Since $\aleph_\alpha^{\aleph_\beta}\leq\aleph_{\alpha+1}^{\aleph_\beta}$ and $\aleph_{\alpha+1}\leq\aleph_{\alpha+1}^{\aleph_\beta}$, then
     $$\aleph_\alpha^{\aleph_\beta}\cdot\aleph_{\alpha+1}\leq\aleph_{\alpha+1}^{\aleph_\beta}\cdot\aleph_{\alpha+1}^{\aleph_\beta}=\aleph_{\alpha+1}^{\aleph_\beta}$$
-    Therefore, it's sufficient to show $\aleph_{\alpha+1}^{\aleph_\beta}\leq\aleph_\alpha^{\aleph_\beta}\cdot\aleph_{\alpha+1}$. Since $\omega_\beta<\omega_{\alpha+1}$ and $\omega_{\alpha+1}$ is regular, then for any $f:\omega_\beta\to\omega_{\alpha+1}$, $f$ is bounded, i.e., there is some $\gamma<\omega_{\alpha+1}$ such that $f(\xi)<\gamma$, for every $\xi<\omega_\beta$. With this
+    Therefore, it's sufficient to show $\aleph_{\alpha+1}^{\aleph_\beta}\leq\aleph_\alpha^{\aleph_\beta}\cdot\aleph_{\alpha+1}$. Since $\omega_\beta<\omega_{\alpha+1}$ and $\omega_{\alpha+1}$ is regular, then for any $f:\omega_\beta\to\omega_{\alpha+1}$, $f$ is bounded, i.e., there is some $\gamma<\omega_{\alpha+1}$ such that $f(\xi)<\gamma$, for every $\xi<\omega_\beta$; in other words $f:\omega_\beta\to\gamma$. With this, we obtain
     $$\omega_{\alpha+1}^{\omega_\beta}=\bigcup_{\gamma<\omega_{\alpha+1}}\gamma^{\omega_\beta}$$
     Now, any $\gamma<\omega_{\alpha+1}$ is such that $|\gamma|\leq\aleph_\alpha$ and, since
     $$\left|\bigcup_{\gamma<\omega_{\alpha+1}}\gamma^{\omega_\beta}\right|\leq\sum_{\gamma<\omega_{\alpha+1}}|\gamma|^{\aleph_\beta}$$
