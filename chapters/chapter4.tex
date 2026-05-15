@@ -145,20 +145,29 @@ We also say $\mc{B}$ forms a $\Delta$-system, if there is a set $R$ such that $\
 
 \section{Silver's Theorem}
 
-Let's now prove the main theorem of this section. Roughly, it says that if GCH holds for all cardinals smaller than some singular with uncountable cofinality, then it also holds for it.
+Let's now state the main theorem of this section. Roughly, it says that if GCH holds for all cardinals smaller than some singular with uncountable cofinality, then it also holds for it.
 
 \begin{theorem}{Silver's Theorem}{silver}
     Let $\aleph_\lambda$ be a singular cardinal, with $\cf(\lambda)>\omega$. If $2^{\aleph_\alpha}=\aleph_{\alpha+1}$, for every $\alpha<\lambda$, then
     $$2^{\aleph_\lambda}=\aleph_{\lambda+1}$$
 \end{theorem}
 
+\subsection{Original Proof Sketch}
+
+The proof of Silver's theorem is quite intricate, and perhaps many of the steps and lemmas do not seem natural. In fact, it is worth mentioning that the original proof is much more complicated, involving, for example, the use of forcing.
+
+The original theorem appeared in 1974 at \todo{add reference}..., in an article called ``On the singular cardinals problem'', and stated that GCH couldn't fail for the first time in a singular cardinal of uncountable cofinality. This result was inspired by the work of Magidor, who at the time was interested in proving that certain types of ultrafilters, called regular ultrafilters, did not exist in $\omega_1$. Instead, he proved that if they did exist, Silver's theorem holds for $\lambda=\omega_1$!\footnote{Not a factorial joke.}
+
+So, roughly, based on Magidor's results, instead of trying to construct directly such object, Silver extends the universe through forcing! He adds to the ground model $M$ a bijection between $2^{\cf(\kappa)}$ and $\aleph_0$ to make it countable, which simplify the combinatorics a lot. He then construct an ultraproduct of the ground model in which $\mc{P}(\kappa)$ is small, allowing him to ``reflect'' such result and conclude $\mc{P}(\kappa)$ is also small in the ground model $M$. A complete proof can be found in \todo{add reference}...
+
+\subsection{Proof}
 In order to prove it, we will first prove a series of lemmas needed to show Silver's result.
 
 \begin{definition}{Strong Limit Cardinal}{strong_limit}
-    A cardinal $\kappa$ is called a \textcolor{laser_eyes!80!black}{strong limit cardinal} if, for any $\lambda<\kappa$, we have $2^\lambda<\kappa$.
+    A cardinal $\kappa$ is called a \textcolor{laser_eyes!80!black}{strong limit cardinal}\footnote{Yeah, this is the same strong limit we cited in the end of \cref{sec:weakly_inaccessible}} if, for any $\lambda<\kappa$, we have $2^\lambda<\kappa$.
 \end{definition}
 
-It's easy to see that, under GCH, the concept of a limit cardinal matches with the one of a strong limit\footnote{yeah, this is the same strong limit we cited in the end of \cref{sec:weakly_inaccessible}} cardinal. Why we should care? Look again to Silver's Theorem hypothesis, we have some kind of partial GCH for all cardinal smaller than $\aleph_\lambda$. In fact, this imply that $\aleph_\alpha$ is a strong limit cardinal for every $\alpha<\lambda$. In particular, the next lemma holds.
+It's easy to see that, under GCH, the concept of a limit cardinal matches with the one of a strong limit cardinal. Why we should care? Look again to Silver's Theorem hypothesis, we have some kind of partial GCH for all cardinal smaller than $\aleph_\lambda$. In fact, this imply that $\aleph_\alpha$ is a strong limit cardinal for every $\alpha<\lambda$. In particular, the next lemma holds.
 
 \begin{lemma}{}{strong_limit_exponentiation}
     If $\aleph_\alpha$ is a strong limit cardinal, and if $\kappa,\lambda<\aleph_\alpha$ are infinite cardinals, then $\kappa^\lambda<\aleph_\alpha$.
@@ -229,3 +238,6 @@ And now we can finally prove Silver's Theorem.
     In fact, if $X\neq Y$, we can get the witnesses at some stage $\omega_\alpha$, and then $f_X(\beta)\neq f_Y(\beta)$ for all $\beta\geq\alpha$, then $F=\{f_X:X\in\mc{P}(\omega_\lambda)\}$ is a family of almost disjoint functions. By the previous lemma
     $$\aleph_\lambda<2^{\aleph_\lambda}=\lvert F\rvert\leq\aleph_{\lambda+1}\implies 2^{\aleph_\lambda}=\aleph_{\lambda+1}$$
 \end{proof}
+
+\section{Singular Cardinal Hypothesis}
+

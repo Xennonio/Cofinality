@@ -7,12 +7,20 @@
 \usepackage{empheq}
 \usepackage{framed}
 \usepackage[most]{tcolorbox}
+\definecolor{lasereyes}{RGB}{220, 6, 90}
+\usepackage[color=lasereyes, textcolor=white]{todonotes}
 \usepackage{hyperref} %% to use texorpdfstring
 \usepackage{cleveref}
-\definecolor{todonotes}{RGB}{220, 6, 90}
-\usepackage[color=todonotes, textcolor=white]{todonotes}
+\hypersetup{
+    colorlinks=false,
+    urlbordercolor=lasereyes,
+    linkbordercolor=lasereyes,
+    citebordercolor=lasereyes
+}
 \usepackage[Conny]{fncychap}
 \usepackage{enumitem}
+\usepackage{footnote}
+\usepackage{etoolbox}
 
 %% asymptote
 \usepackage{asymptote}
@@ -38,7 +46,6 @@ usepackage("bm");
 
 %% -- Pagestyle --
 \setlength{\parskip}{0.05in} %% space between paragraphs
-\colorlet{shadecolor}{orange!15}
 \parindent 0in %% no paragraph indentation
 \geometry{margin=1in} %% page margin
 \ChTitleAsIs %% not upper titles
@@ -71,6 +78,8 @@ usepackage("bm");
         right color=laser_eyes!85!black
         },
 }{th}
+\BeforeBeginEnvironment{theorem}{\savenotes}
+\AfterEndEnvironment{theorem}{\spewnotes}
 
 %% definitions style
 \NewTcbTheorem[number within=chapter]{definition}{Definition}{
@@ -78,6 +87,8 @@ usepackage("bm");
     colframe=gray!80!black,
     fonttitle=\bfseries,
 }{def}
+\BeforeBeginEnvironment{definition}{\savenotes}
+\AfterEndEnvironment{definition}{\spewnotes}
 
 %% lemmas style
 \NewTcbTheorem[number within=chapter]{lemma}{Lemma}{
@@ -85,6 +96,8 @@ usepackage("bm");
     colframe=gray!30!black,
     fonttitle=\bfseries,
 }{lem}
+\BeforeBeginEnvironment{lemma}{\savenotes}
+\AfterEndEnvironment{lemma}{\spewnotes}
 
 %% corollaries style
 \NewTcbTheorem[number within=chapter]{corollary}{Corollary}{
@@ -92,3 +105,5 @@ usepackage("bm");
     colframe=gray!55!black,
     fonttitle=\bfseries,
 }{cor}
+\BeforeBeginEnvironment{corollary}{\savenotes}
+\AfterEndEnvironment{corollary}{\spewnotes}
