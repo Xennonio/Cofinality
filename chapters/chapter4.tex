@@ -9,7 +9,7 @@ Before defining stationary sets, let's first analyze a similar concept.
 Throughout this section, $\kappa$ will denote a regular cardinal.
 
 \begin{definition}{Club}{club}
-    A set $C\subseteq\kappa$ is called a \textcolor{laser_eyes!80!black}{closed unbounded set in $\kappa$} (or, more shortly, a \textcolor{laser_eyes!80!black}{club}), if
+    A set $C\subseteq\kappa$ is called a \lasereye{closed unbounded set in $\kappa$} (or, more shortly, a \lasereye{club}), if
     \begin{itemize}
         \item $C$ is unbounded in $\kappa$;
         \item $C$ is closed, i.e., $\sup(C\cap\alpha)\in C$ for all $\alpha<\kappa$.
@@ -31,7 +31,7 @@ Note that $C$ being closed in $\kappa$ is equivalent to say that every sequence 
     where $\alpha_n\in C_1$ and $\beta_n\in C_2$, for $n\in\omega$. In fact, they exists, since $C_1$ and $C_2$ are unbounded, and their supremum $\delta$ is the same. Now, since $C_1$ and $C_2$ are also closed, we know $\delta\in C_1\cap C_2$.
 \end{proof}
 
-The previous lemma guarantees us the set of all clubs generates a filter, called \textcolor{laser_eyes!80!black}{the club filter} on $\kappa$
+The previous lemma guarantees us the set of all clubs generates a filter, called \lasereye{the club filter} on $\kappa$
 \begin{equation}\label{eq:club_filter}
     \mathrm{club}(\kappa):=\{X\subseteq\kappa:X\supseteq C\text{ for some club }C\}
 \end{equation}
@@ -58,13 +58,13 @@ In fact, such filter is $\kappa$-complete, which follows from the next lemma
 \section{Stationary Sets and Fodor's Lemma}
 
 \begin{definition}{Stationary Set}{stationary}
-    A set $S\subseteq\kappa$ is \textcolor{laser_eyes!80!black}{stationary} if for every club $C$, we have $S\cap C\neq\emptyset$.
+    A set $S\subseteq\kappa$ is \lasereye{stationary} if for every club $C$, we have $S\cap C\neq\emptyset$.
 \end{definition}
 
 By the previous lemmas, every club is stationary; and if $S$ is stationary, then any $T$ such that $S\subseteq T\subseteq\kappa$ is also stationary. Interestingly, nonstationary sets are exactly the ones belonging to the ideal dual to the club filter.
 
 \begin{definition}{Regressive Function}{regressive}
-    A function $f$ with domain $S\subseteq\kappa$ is \textcolor{laser_eyes!80!black}{regressive} if $f(\alpha)<\alpha$ for all $\alpha\neq0$.
+    A function $f$ with domain $S\subseteq\kappa$ is \lasereye{regressive} if $f(\alpha)<\alpha$ for all $\alpha\neq0$.
 \end{definition}
 
 The next theorem\footnote{Which is usually called lemma} shows how uncountable regular cardinals differs substantially from $\aleph_0$. For example, it shows that there is no analogue for $\omega_1$ of the function $f:\omega\to\omega$ defined by $f(n)=n-1$ for $n>0$, and $f(0)=0$, which is regressive, and assume each value in $\omega$ only finitely many times.
@@ -84,7 +84,7 @@ Before proving it, we need an auxiliary lemma
 \begin{lemma}{}{diagonal_intersection}
     If $\{C_\xi\}_{\xi<\kappa}$ is a family of clubs, then the set $C\subseteq\kappa$ defined by
     $$\alpha\in C\iff \alpha\in C_\xi,\;\forall \xi<\alpha$$
-    called the \textcolor{laser_eyes!80!black}{Diagonal Intersection} of the $C_\xi$, is also a club.
+    called the \lasereye{Diagonal Intersection} of the $C_\xi$, is also a club.
 \end{lemma}
 
 \begin{proof}
@@ -129,8 +129,8 @@ First note that, until now, we saw every club is stationary, and then that every
 
 As another application, we will prove a really famous theorem\footnote{Although it's called lemma, which we will in fact state as a corollary xD.} in combinatorial set theory, known as the $\Delta$-System Lemma. In particular, it's really important when proving some Forcing Notions are in fact ccc. Let's first define a $\Delta$-system.
 
-\begin{definition}{}{delta_system}
-    A family of sets $\mc{A}$ forms a \textcolor{laser_eyes!80!black}{$\Delta$-system with root $R$} if, and only if, $X\cap Y=R$, whenever $X,Y\in\mc{A}$, with $X\neq Y$.
+\begin{definition}{$\Delta$-system}{delta_system}
+    A family of sets $\mc{A}$ forms a \lasereye{$\Delta$-system with root $R$} if, and only if, $X\cap Y=R$, whenever $X,Y\in\mc{A}$, with $X\neq Y$.
 \end{definition}
 
 We also say $\mc{B}$ forms a $\Delta$-system, if there is a set $R$ such that $\mc{B}$ is a $\Delta$-system with root $R$.
@@ -156,15 +156,15 @@ Let's now state the main theorem of this section. Roughly, it says that if GCH h
 
 The proof of Silver's theorem is quite intricate, and perhaps many of the steps and lemmas do not seem natural. In fact, it is worth mentioning that the original proof is much more complicated, involving, for example, the use of forcing.
 
-The original theorem appeared in 1974 at \todo{add reference}..., in an article called ``On the singular cardinals problem'', and stated that GCH couldn't fail for the first time in a singular cardinal of uncountable cofinality. This result was inspired by the work of Magidor, who at the time was interested in proving that certain types of ultrafilters, called regular ultrafilters, did not exist in $\omega_1$. Instead, he proved that if they did exist, Silver's theorem holds for $\lambda=\omega_1$!\footnote{Not a factorial joke.}
+The original theorem appeared in 1974 at \cite{bib:silver}, in an article called ``On the singular cardinals problem'', and stated that GCH couldn't fail for the first time in a singular cardinal of uncountable cofinality. This result was inspired by the work of Magidor, who at the time was interested in proving that certain types of ultrafilters, called regular ultrafilters, did not exist in $\omega_1$. Instead, he proved that if they did exist, Silver's theorem holds for $\lambda=\omega_1$!\footnote{Not a factorial joke.}
 
-So, roughly, based on Magidor's results, instead of trying to construct directly such object, Silver extends the universe through forcing! He adds to the ground model $M$ a bijection between $2^{\cf(\kappa)}$ and $\aleph_0$ to make it countable, which simplify the combinatorics a lot. He then construct an ultraproduct of the ground model in which $\mc{P}(\kappa)$ is small, allowing him to ``reflect'' such result and conclude $\mc{P}(\kappa)$ is also small in the ground model $M$. A complete proof can be found in \todo{add reference}...
+So, roughly, based on Magidor's results, instead of trying to construct directly such object, Silver extends the universe through forcing! He adds to the ground model $M$ a bijection between $2^{\cf(\kappa)}$ and $\aleph_0$ to make it countable, which simplify the combinatorics a lot. He then construct an ultraproduct of the ground model in which $\mc{P}(\kappa)$ is small, allowing him to ``reflect'' such result and conclude $\mc{P}(\kappa)$ is also small in the ground model $M$. A complete proof can be found in \cite{bib:gallart}.
 
 \subsection{Proof}
 In order to prove it, we will first prove a series of lemmas needed to show Silver's result.
 
 \begin{definition}{Strong Limit Cardinal}{strong_limit}
-    A cardinal $\kappa$ is called a \textcolor{laser_eyes!80!black}{strong limit cardinal}\footnote{Yeah, this is the same strong limit we cited in the end of \cref{sec:weakly_inaccessible}} if, for any $\lambda<\kappa$, we have $2^\lambda<\kappa$.
+    A cardinal $\kappa$ is called a \lasereye{strong limit cardinal}\footnote{Yeah, this is the same strong limit we cited in the end of \cref{sec:weakly_inaccessible}} if, for any $\lambda<\kappa$, we have $2^\lambda<\kappa$.
 \end{definition}
 
 It's easy to see that, under GCH, the concept of a limit cardinal matches with the one of a strong limit cardinal. Why we should care? Look again to Silver's Theorem hypothesis, we have some kind of partial GCH for all cardinal smaller than $\aleph_\lambda$. In fact, this imply that $\aleph_\alpha$ is a strong limit cardinal for every $\alpha<\lambda$. In particular, the next lemma holds.
@@ -178,14 +178,14 @@ It's easy to see that, under GCH, the concept of a limit cardinal matches with t
     where in the inequality we used \cref{lem:card_exp_a_leq_b}.
 \end{proof}
 
-\textcolor{laser_eyes!80!black}{Throughout this section, we will fix a $\lambda$ as in Silver's Theorem, and let $\kappa=\cf(\lambda)<\lambda$}. Then, by the previous Lemma, we can conclude the following, which we will use extensively from now on
+\lasereye{Throughout this section, we will fix a $\lambda$ as in Silver's Theorem, and let $\kappa=\cf(\lambda)<\lambda$}. Then, by the previous Lemma, we can conclude the following, which we will use extensively from now on
 
 \begin{equation}\label{eq:silver_aux_eq}
     2^\kappa<\aleph_\lambda\text{ and }\aleph_\alpha^\kappa<\aleph_\lambda\text{, for every }\alpha<\lambda.
 \end{equation}
 
-\begin{definition}{}{almost_disjoint}
-    Two functions $f,g$ on $\kappa$ are \textcolor{laser_eyes!80!black}{almost disjoint} if there is some $\alpha<\kappa$ such that $f(\beta)\neq g(\beta)$, for all $\beta\geq\alpha$.
+\begin{definition}{Almost Disjoint}{almost_disjoint}
+    Two functions $f,g$ on $\kappa$ are \lasereye{almost disjoint} if there is some $\alpha<\kappa$ such that $f(\beta)\neq g(\beta)$, for all $\beta\geq\alpha$.
 \end{definition}
 
 We can now state our second lemma.
@@ -238,6 +238,4 @@ And now we can finally prove Silver's Theorem.
     In fact, if $X\neq Y$, we can get the witnesses at some stage $\omega_\alpha$, and then $f_X(\beta)\neq f_Y(\beta)$ for all $\beta\geq\alpha$, then $F=\{f_X:X\in\mc{P}(\omega_\lambda)\}$ is a family of almost disjoint functions. By the previous lemma
     $$\aleph_\lambda<2^{\aleph_\lambda}=\lvert F\rvert\leq\aleph_{\lambda+1}\implies 2^{\aleph_\lambda}=\aleph_{\lambda+1}$$
 \end{proof}
-
-\section{Singular Cardinal Hypothesis}
 

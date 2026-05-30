@@ -15,10 +15,11 @@
     colorlinks=false,
     urlbordercolor=lasereyes,
     linkbordercolor=lasereyes,
-    citebordercolor=lasereyes
+    citebordercolor=lasereyes,
 }
 \usepackage[Conny]{fncychap}
 \usepackage{enumitem}
+\setlist[itemize]{leftmargin=*, nosep}
 \usepackage{footnote}
 \usepackage{etoolbox}
 
@@ -61,11 +62,13 @@ usepackage("bm");
 \renewcommand{\figurename}{Fig.}
 \renewcommand{\contentsname}{Summary}
 \counterwithout{equation}{chapter}
+\newcommand{\lasereye}[1]{\textcolor{emph}{#1}}
 
 %% -- Environments --
 %% lorelei and the laser eyes colors
 \definecolor{lorelei}{RGB}{120, 4, 56}
 \definecolor{laser_eyes}{RGB}{220, 6, 90}
+\colorlet{emph}{laser_eyes!80!black}
 
 %% theorems style
 \NewTcbTheorem[number within=chapter]{theorem}{Theorem}{

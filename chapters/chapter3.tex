@@ -55,7 +55,7 @@ With such big results in hands, we can prove the following lemma
 \end{lemma}
 Note that this lemma restricts the possible values $2^{\aleph_\alpha}$ can assume, depending on its cofinality. As an example, which also reinforce the comments in \cref{sec:ramb_cof} and in the last footnote, notice that we can't have $2^{\aleph_0}=\aleph_\omega$, since then we would have $\aleph_0=\cf\rp{\aleph_\omega}=\cf\rp{2^{\aleph_0}}>\aleph_0$, a contradiction.
 
-In fact, Robert Solovay published a result in a really famous one page paper named ``$2^{\aleph_0}$ can be anything it ought to be'' which basically says that the only two things we can prove about the continuum is: that it's uncountable, and that it has uncountable cofinality. Formally, the result says that for any uncountable cardinal $\kappa$ with uncountable cofinality, there is a model of ZFC where this is realized, i.e., where $2^{\aleph_0}=\kappa$.
+In fact, Robert Solovay published a result in a really famous one page paper named ``$2^{\aleph_0}$ can be anything it ought to be'' which basically says that the only thing we can prove about the continuum is that it has uncountable cofinality. Formally, the result says that for any cardinal $\kappa$ with uncountable cofinality, there is a model of ZFC where this is realized, i.e., where $2^{\aleph_0}=\kappa$.
 
 Nowadays, such result is a direct consequence of a more general one known as Easton's Theorem, that says basically the same thing, but for any regular cardinal, i.e., the only constraints on permissible values for $2^\kappa$ when $\kappa$ is a regular cardinal are \cref{eq:2_exp} and the previous lemma.
 
@@ -80,7 +80,7 @@ Notice how we didn't use anything special about $2$, and then we can repeat the 
 
 As we saw\footnote{Actually we didn't saw the proof, so you can rather believe me xD or check my \href{https://github.com/Xennonio/Consistency-Results}{Consistency Results} notes to see a complete proof of Easton's Theorem.}, the inequalities above are the only ones we can prove about regular cardinals, the next natural step is to ask if there is a generalization, or some similar result about singular cardinals. In fact, for singular cardinals $\kappa$, various additional constraints in the behavior of $2^\kappa$ are known.
 
-By know, the most interesting one is Silver's Theorem, since it implies that Easton's Theorem can't be extended to include singular cardinals. But, nowadays, Shelah's work on PCF Theory gives a lot of results on the possible values of $2^\kappa$, for $\kappa$ singular. It shows that such values are strongly influenced by the values on smaller cardinals, as we will see next and when proving Silver's Theorem, whereas Easton shows this is not the case for regular cardinals.
+By now, the most interesting one is Silver's Theorem, since it implies that Easton's Theorem can't be extended to include singular cardinals. But, nowadays, Shelah's work on PCF Theory gives a lot of results on the possible values of $2^\kappa$, for $\kappa$ singular. It shows that such values are strongly influenced by the values on smaller cardinals, as we will see next and when proving Silver's Theorem, whereas Easton shows this is not the case for regular cardinals.
 
 \begin{lemma}{Baby Silver's Theorem}{baby_silver}
     Let $\aleph_\alpha$ be a singular cardinal, if $2^{\aleph_\xi}=\aleph_\beta$ for all $\xi<\alpha$, then $2^{\aleph_\alpha}=\aleph_\beta$.
