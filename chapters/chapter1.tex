@@ -24,13 +24,13 @@ However, we donâ€™t necessarily need to take \textit{all} smaller ordinals. Itâ€
 \section{Definition of Cofinality}
 
 \begin{definition}{Cofinality}{cofinality}
-    We will define $\cf(\alpha)$, the \lasereye{cofinality} of $\alpha$, with $\alpha$ a limit ordinal, as the smallest ordinal $\vartheta$ such that $\alpha$ is the limit of an increasing transfinite sequence $\langle\alpha_\xi:\xi<\gamma\rangle$ of length $\gamma$, i.e.
+    We will define $\cf{\alpha}$, the \lasereye{cofinality} of $\alpha$, with $\alpha$ a limit ordinal, as the smallest ordinal $\vartheta$ such that $\alpha$ is the limit of an increasing transfinite sequence $\langle\alpha_\xi:\xi<\gamma\rangle$ of length $\gamma$, i.e.
     $$\alpha=\lim_{\xi\to\gamma}\alpha_\xi:=\bigcup_{\xi<\gamma}\alpha_\xi$$
 \end{definition}
 
-Equivalently, making easier to visualize the relation between this with the discussion above, $\cf(\alpha)$ is the smaller ordinal $\beta$ such that exists $f:\beta\to\alpha$, satisfying
+Equivalently, making easier to visualize the relation between this with the discussion above, $\cf{\alpha}$ is the smaller ordinal $\beta$ such that exists $f:\beta\to\alpha$, satisfying
 $$\alpha=\bigcup_{\xi<\beta}f(\xi)=\bigcup\mathrm{Im}(f)$$
-i.e., $\cf(\alpha)$ is the smaller ordinal $\beta$ such that there exists a union of $\beta$ ordinals $\alpha_\xi$ less than $\alpha$.
+i.e., $\cf{\alpha}$ is the smaller ordinal $\beta$ such that there exists a union of $\beta$ ordinals $\alpha_\xi$ less than $\alpha$.
 
 \section{Regular and Singular Cardinals}
 
@@ -51,7 +51,7 @@ Alternatively, we can define these cardinals more concretely using the following
 \end{lemma}
 
 \begin{proof}
-    $(\Rightarrow)$ If $\kappa$ is singular, then $\kappa=\bigcup_{\xi<\gamma}\alpha_\xi$ for some increasing transfinite sequence with $\alpha_\xi<\kappa$ and $\gamma=\cf(\kappa)<\kappa$. This already guarantees us that $\kappa\leq\sum_{\xi<\gamma}\lvert\alpha_\xi\rvert$, in order to guarantee the equality, we need to write the union as a disjoint one. The idea is exactly the same as to write the union of $n$ sets as a disjoint union, but now we do this for any ordinal instead of just $n$:
+    $(\Rightarrow)$ If $\kappa$ is singular, then $\kappa=\bigcup_{\xi<\gamma}\alpha_\xi$ for some increasing transfinite sequence with $\alpha_\xi<\kappa$ and $\gamma=\cf{\kappa}<\kappa$. This already guarantees us that $\kappa\leq\sum_{\xi<\gamma}\lvert\alpha_\xi\rvert$, in order to guarantee the equality, we need to write the union as a disjoint one. The idea is exactly the same as to write the union of $n$ sets as a disjoint union, but now we do this for any ordinal instead of just $n$:
     $$\kappa=\bigcup_{\xi<\gamma}\alpha_\xi=\bigcup_{\xi<\gamma}\rp{\alpha_\xi\backslash\bigcup_{\beta<\xi}\alpha_\beta}.$$
     Then, defining $A_\xi:=\alpha_\xi\backslash\bigcup_{\beta<\xi}\alpha_\beta$, we have that $\langle A_\xi:\xi<\gamma\rangle$ is a sequence of length less than $\kappa$ of disjoint sets of cardinality $\kappa_\xi=|A_\xi|=\left|\alpha_\xi\backslash\bigcup_{\beta<\xi}\alpha_\beta\right|\leq|\alpha_\xi|<\kappa$, hence, let $I=\gamma$ and we will have
     $$\kappa=\sum_{\xi<\gamma}\kappa_\xi=\sum_{i\in I}\kappa_i$$
@@ -61,4 +61,4 @@ Alternatively, we can define these cardinals more concretely using the following
     so $\kappa$ is the supremum of the image of a transfinite sequence $\langle\kappa_\xi:\xi<\gamma\rangle$, hence, it's easy to find by transfinite recursion an increasing subsequence with limit $\kappa$.
 \end{proof}
 
-Note that such characterization captures well the idea discussed at motivation. We can relate it to the concept of cofinality as follows: it's expected and easy to verify that, if $\kappa$ is a singular cardinal, then $\cf(\kappa)<\kappa$, i.e., there is an increasing sequence of length smaller than $\kappa$ with elements smaller than $\kappa$, but which has $\kappa$ as a limit and, if $\kappa$ is regular, since $\cf(\kappa)\leq\kappa$, we have that $\cf(\kappa)=\kappa$.
+Note that such characterization captures well the idea discussed at motivation. We can relate it to the concept of cofinality as follows: it's expected and easy to verify that, if $\kappa$ is a singular cardinal, then $\cf{\kappa}<\kappa$, i.e., there is an increasing sequence of length smaller than $\kappa$ with elements smaller than $\kappa$, but which has $\kappa$ as a limit and, if $\kappa$ is regular, since $\cf{\kappa}\leq\kappa$, we have that $\cf{\kappa}=\kappa$.

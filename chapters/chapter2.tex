@@ -4,7 +4,7 @@
 
 To facilitate notation, we will say that a cardinal $\aleph_\alpha$ is a \lasereye{successor cardinal} if $\alpha$ is a successor ordinal, and we will say that it's a \lasereye{limit cardinal} if $\alpha$ is a limit ordinal.
 
-Let's explore the concept we create with some cardinals. For the cases used in the motivation, we have that $\cf(\aleph_0)=\aleph_0$ and $\cf(\aleph_1)=\aleph_1$, i.e., both are regular cardinals, since they can't be written as a union of $\aleph_0$ or $\aleph_1$ smaller elements, respectively. In particular, the following lemma states that every successor cardinal $\aleph_{\alpha+1}$ is a regular cardinal, that is, it's not easy to "reach them from below", only with smaller sets.
+Let's explore the concept we create with some cardinals. For the cases used in the motivation, we have that $\cf{\aleph_0}=\aleph_0$ and $\cf{\aleph_1}=\aleph_1$, i.e., both are regular cardinals, since they can't be written as a union of $\aleph_0$ or $\aleph_1$ smaller elements, respectively. In particular, the following lemma states that every successor cardinal $\aleph_{\alpha+1}$ is a regular cardinal, that is, it's not easy to "reach them from below", only with smaller sets.
 
 \begin{lemma}{}{successor_is_regular}
     Every successor cardinal $\aleph_{\alpha+1}$ is a regular cardinal.
@@ -55,12 +55,12 @@ With this, we can have a visualization of which of the first cardinals are regul
 
 Let's now investigate how would be an uncountable limit regular cardinal. Let $\aleph_\lambda$ be such cardinal, since $\lambda$ is a limit ordinal, then
 $$\aleph_\lambda=\lim_{\alpha\to\lambda}\aleph_\alpha$$
-i.e., $\aleph_\lambda$ is the limit of an increasing sequence of length $\alpha$, in particular, we could change such sequence to another one of length $\cf(\lambda)$. It's easy to see how this imply the next result
+i.e., $\aleph_\lambda$ is the limit of an increasing sequence of length $\alpha$, in particular, we could change such sequence to another one of length $\cf{\lambda}$. It's easy to see how this imply the next result
 \begin{lemma}{}{cof_aleph}
-    If $\lambda$ is a limit ordinal, then $\cf(\aleph_\lambda)=\cf(\lambda)$
+    If $\lambda$ is a limit ordinal, then $\cf{\aleph_\lambda}=\cf{\lambda}$
 \end{lemma}
 
-Now, since in our case $\aleph_\lambda$ is also a regular cardinal, then $\aleph_\lambda=\cf(\aleph_\lambda)=\cf(\lambda)\leq\lambda$, which imply
+Since in our case $\aleph_\lambda$ is also a regular cardinal, then $\aleph_\lambda=\cf{\aleph_\lambda}=\cf{\lambda}\leq\lambda$, which imply
 \begin{center}
     \begin{tcolorbox}[hbox]
     $\aleph_\lambda=\lambda$
@@ -81,20 +81,26 @@ Such property and example suggest these cardinals should be really big. However,
 \begin{proof}
     Let $\kappa$ be an arbitrary cardinal and consider the following sequence $\alpha_n$ defined recursively as $\alpha_0=\aleph_\gamma$, $\alpha_{n+1}=\aleph_{\alpha_n}$, for each $n\in\omega$. Now, assume by contradiction that there is not singular $\alpha\geq\kappa$ which is a aleph fixed point, then $\alpha_n$ is an increasing sequence; let $\alpha:=\lim_{n\to\omega}\alpha_n$. Obviously the sequence $\aleph_{\alpha_n}=\alpha_{n+1}$ also has limit $\aleph_\alpha$, therefore, we have that
     $$\aleph_\alpha=\lim_{n\to\omega}\aleph_{\alpha_n}=\lim_{n\to\omega}\alpha_{n+1}=\alpha$$
-    Then $\alpha=\aleph_\alpha$ is a fixed aleph point which is also a limit of an increasing sequence of length $\omega$, i.e., $\cf(\alpha)=\omega<\alpha$, then it's singular.
+    Then $\alpha=\aleph_\alpha$ is a fixed aleph point which is also a limit of an increasing sequence of length $\omega$, i.e., $\cf{\alpha}=\omega<\alpha$, then it's singular.
 \end{proof}
 
-The next natural step is then ask what would be an example of an uncountable regular limit cardinal. Well, surprisingly, such cardinals, named weakly inaccessible cardinals, are so big that ZFC can't prove they exist! Inaccessible cardinals are some of the first cardinals in a larger class of properties named Large Cardinals Properties.
+Another smallness property of the first aleph fixed point is that it has countable cofinality. Then, how far an uncountable limit regular cardinal should be in the ``line'' of aleph fixed points? Well, let $F$ be the class function enumerating all aleph fixed point, then, since $F$ is a normal function, $\kappa$ should also be a $F$-fixed point! I.e., it's as far in the line as its own size.
 
-Unfortunatelly, the proof is not that easy, since we need to use a consistent result, namely, that GCH is consistent with ZFC\footnote{You can find a proof of it in my \href{https://github.com/Xennonio/Consistency-Results}{Consistency Results notes}, in Section 3. The Constructible Universe $L$.}. However, we can prove it for a somewhat similar cardinal, named strongly limit cardinals, you can see how to prove it in the \todo{add hyperlink}Large Cardinals notes, and then how to use it to show ZFC also can't prove weakly inaccessible exist.
+And we can keep going on this, if we let $G$ be an enumeration of the $F$ fixed point, then $G(\kappa)=\kappa$ too, since $G$ would be normal, and so on. This shows for itself how big such cardinals are.
+
+The next natural step is then ask if we can even achieve an example of an uncountable regular limit cardinal. Well, surprisingly (or maybe not), such cardinals, named \lasereye{weakly inaccessible cardinals}, are so big that ZFC can't prove they exist! Inaccessible cardinals are some of the first cardinals in a larger class of properties named Large Cardinals Axioms.
+
+This facts captures even better how big such cardinals are. In some sense, we can't even define it based on definable normal functions in ZFC, so almost everything ``really big'' you could try to create in the language of ZFC would not reach a weakly inaccessible.
+
+Unfortunatelly, the proof ZFC can't prove its existence is not that easy, since we need to use a consistent result, namely, that GCH is consistent with ZFC\footnote{You can find a proof of it in my \href{https://github.com/Xennonio/Consistency-Results}{Consistency Results notes}, in Section 3. The Constructible Universe $L$.}. However, we can prove it for a somewhat similar cardinal, named strongly limit cardinals, you can see how to prove it in the \todo{add hyperlink}Large Cardinals notes, and then how to use it to show ZFC also can't prove weakly inaccessible exist.
 
 \section{Rambling on Cofinality}\label{sec:ramb_cof}
 
 Now we already motivated Large Cardinal, let's ramble a little about cofinality. Some books, before defining cofinality, use the following definitions: a set $C\subseteq\lambda$ is cofinal or unbounded in $\lambda$ if for all $\alpha<\lambda$, there exists a $\gamma\in C$ such that $\alpha<\gamma$. It's not hard to see that this is equivalent to $\bigcup C=\lambda$.
 
-We can then define $\cf(\lambda)$ as the least cardinality of an unbounded subset of $\lambda$. In other words, what we are saying is that subsets of regular cardinal need almost all elements to become unbounded in it, whereas singular cardinals don't.
+We can then define $\cf{\lambda}$ as the least cardinality of an unbounded subset of $\lambda$. In other words, what we are saying is that subsets of regular cardinal need almost all elements to become unbounded in it, whereas singular cardinals don't.
 
-Now, imagine we have some property about ordinals smaller than $\aleph_\omega$, and such property is somewhat inductive. Then the process of extending this property to $\aleph_\omega$ itself would require only $\omega$ many steps, since $\cf(\aleph_\omega)=\omega$, whereas, for example, doing the same for $\aleph_1$ would require uncountable many steps.
+Now, imagine we have some property about ordinals smaller than $\aleph_\omega$, and such property is somewhat inductive. Then the process of extending this property to $\aleph_\omega$ itself would require only $\omega$ many steps, since $\cf{\aleph_\omega}=\omega$, whereas, for example, doing the same for $\aleph_1$ would require uncountable many steps.
 
 Of course none of this is really formal, but you will get your own intuition about this while getting deeper and deeper in set theory. You will see that a lot of theorems states something only for regular or only for singular cardinals, and that they influence a lot, for example, in cardinal arithmetic. In fact, we will see in the next chapters that cardinal arithmetic depends a lot of when the cardinals we are using are either singular or regular.
 
@@ -102,27 +108,27 @@ Of course none of this is really formal, but you will get your own intuition abo
 
 Let's finish this section with some extra results about cofinality.
 
-We already proved that if $\aleph_\alpha$ is singular, then $\cf(\omega_\alpha)<\omega_\alpha$ and, if it's regular, then $\cf(\omega_\alpha)=\omega_\alpha$. We will now show that
+We already proved that if $\aleph_\alpha$ is singular, then $\cf{\omega_\alpha}<\omega_\alpha$ and, if it's regular, then $\cf{\omega_\alpha}=\omega_\alpha$. We will now show that
 
 \begin{lemma}{}{cf_alpha_is_regular}
-    If a limit ordinal $\alpha$ isn't a cardinal, then $\cf(\alpha)<\alpha$. In particular, for all limit ordinal $\alpha$, we have $\cf(\alpha)=\alpha$ if, and only if, $\alpha$ is a regular cardinal.
+    If a limit ordinal $\alpha$ isn't a cardinal, then $\cf{\alpha}<\alpha$. In particular, for all limit ordinal $\alpha$, we have $\cf{\alpha}=\alpha$ if, and only if, $\alpha$ is a regular cardinal.
 \end{lemma}
 
 \begin{proof}
     Let $\alpha$ be an ordinal which is not a cardinal, then $\kappa=\lvert\alpha\rvert<\alpha$ and there is a bijection $f:\kappa\to\alpha$, i.e., a sequence $\langle\alpha_\nu=f(\nu):\nu<\kappa\rangle$ of length $\kappa$ such that $\{\alpha_\nu:\nu<\kappa\}=\alpha$.
 
-    Now, even if such sequence was not increasing, we could find, using transfinite induction, an increasing subsequence with limit $\alpha$. And, since the length of the subsequence is at most $\kappa<\alpha$, then $\cf(\alpha)<\alpha$.
+    Now, even if such sequence was not increasing, we could find, using transfinite induction, an increasing subsequence with limit $\alpha$. And, since the length of the subsequence is at most $\kappa<\alpha$, then $\cf{\alpha}<\alpha$.
 \end{proof}
 
 \begin{lemma}{}{cf_idempotency}
     For all limit ordinal $\alpha$, we have
-    $$\cf(\cf(\alpha))=\cf(\alpha)$$
+    $$\cf{\cf{\alpha}}=\cf{\alpha}$$
 \end{lemma}
 
 \begin{proof}
-    Let $\vartheta=\cf(\alpha)$. Clearly $\vartheta$ is a limit ordinal and we already know that $\cf(\vartheta)\leq\vartheta$. Now, assume by a contradiction that $\gamma=\cf(\vartheta)<\vartheta$, then there is an increasing sequence $\langle\nu_\xi:\xi<\gamma\rangle$ with $\lim_{\xi\to\gamma}\nu_\xi=\vartheta$. But since $\vartheta=\cf(\alpha)$, there is also a $\langle\alpha_{\nu_\xi}:\xi<\gamma\rangle$ of length $\gamma<\vartheta$ with limit $\alpha$, contradicting the minimality of $\vartheta$.
+    Let $\vartheta=\cf{\alpha}$. Clearly $\vartheta$ is a limit ordinal and we already know that $\cf{\vartheta}\leq\vartheta$. Now, assume by a contradiction that $\gamma=\cf{\vartheta}<\vartheta$, then there is an increasing sequence $\langle\nu_\xi:\xi<\gamma\rangle$ with $\lim_{\xi\to\gamma}\nu_\xi=\vartheta$. But since $\vartheta=\cf{\alpha}$, there is also a $\langle\alpha_{\nu_\xi}:\xi<\gamma\rangle$ of length $\gamma<\vartheta$ with limit $\alpha$, contradicting the minimality of $\vartheta$.
 \end{proof}
 
 \begin{corollary}{}{cf_alpha_is_regular}
-    For all limit ordinal $\alpha$, $\cf(\alpha)$ is a regular cardinal.
+    For all limit ordinal $\alpha$, $\cf{\alpha}$ is a regular cardinal.
 \end{corollary}

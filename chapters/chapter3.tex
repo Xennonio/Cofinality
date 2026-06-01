@@ -51,34 +51,34 @@ Notice that the choices of $B_i^\dagger$ and $B_i^\ddagger$ in the proof looks l
 With such big results in hands, we can prove the following lemma
 \begin{lemma}{}{cf_exponentiation}
     For any ordinal $\alpha$
-    $$\cf\rp{2^{\aleph_\alpha}}>\aleph_\alpha$$
+    $$\cf{2^{\aleph_\alpha}}>\aleph_\alpha$$
 \end{lemma}
-Note that this lemma restricts the possible values $2^{\aleph_\alpha}$ can assume, depending on its cofinality. As an example, which also reinforce the comments in \cref{sec:ramb_cof} and in the last footnote, notice that we can't have $2^{\aleph_0}=\aleph_\omega$, since then we would have $\aleph_0=\cf\rp{\aleph_\omega}=\cf\rp{2^{\aleph_0}}>\aleph_0$, a contradiction.
+Note that this lemma restricts the possible values $2^{\aleph_\alpha}$ can assume, depending on its cofinality. As an example, which also reinforce the comments in \cref{sec:ramb_cof} and in the last footnote, notice that we can't have $2^{\aleph_0}=\aleph_\omega$, since then we would have $\aleph_0=\cf{\aleph_\omega}=\cf{2^{\aleph_0}}>\aleph_0$, a contradiction.
 
 In fact, Robert Solovay published a result in a really famous one page paper named ``$2^{\aleph_0}$ can be anything it ought to be'' which basically says that the only thing we can prove about the continuum is that it has uncountable cofinality. Formally, the result says that for any cardinal $\kappa$ with uncountable cofinality, there is a model of ZFC where this is realized, i.e., where $2^{\aleph_0}=\kappa$.
 
 Nowadays, such result is a direct consequence of a more general one known as Easton's Theorem, that says basically the same thing, but for any regular cardinal, i.e., the only constraints on permissible values for $2^\kappa$ when $\kappa$ is a regular cardinal are \cref{eq:2_exp} and the previous lemma.
 
 \begin{proof}
-    Let $\vartheta=\cf\rp{2^{\aleph_\alpha}}$, then, there are $\kappa_\nu<2^{\aleph_\alpha}$, $\nu<\vartheta$ such that
+    Let $\vartheta=\cf{2^{\aleph_\alpha}}$, then, there are $\kappa_\nu<2^{\aleph_\alpha}$, $\nu<\vartheta$ such that
     $$2^{\aleph_\alpha}=\sum_{\nu<\vartheta}\kappa_\nu$$
     Using König's Theorem for $\lambda_\nu=2^{\aleph_\alpha}$, we have
     $$2^{\aleph_\alpha}=\sum_{\nu<\vartheta}\kappa_\nu<\prod_{\nu<\vartheta}2^{\aleph_\alpha}=\rp{2^{\aleph_\alpha}}^\vartheta$$
     Now, assume by contradiction that $\vartheta\leq\aleph_\alpha$, then
     $$2^{\aleph_\alpha}>\rp{2^{\aleph_\alpha}}^\vartheta\leq\rp{2^{\aleph_\alpha}}^{\aleph_\alpha}=2^{\aleph_\alpha\cdot\aleph_\alpha}=2^{\aleph_\alpha}$$
-    a contradiction, so $\vartheta=\cf\rp{2^{\aleph_\alpha}}>\aleph_\alpha$.
+    a contradiction, so $\vartheta=\cf{2^{\aleph_\alpha}}>\aleph_\alpha$.
 \end{proof}
 
 Notice how we didn't use anything special about $2$, and then we can repeat the exact same argument for any cardinal $\kappa>1$, giving us:
 
 \begin{corollary}{}{cf_exponentiation}
     For any cardinals $\kappa,\lambda>1$, we have
-    $$\cf\rp{\kappa^\lambda}>\lambda$$
+    $$\cf{\kappa^\lambda}>\lambda$$
 \end{corollary}
 
 \subsection{Digression on Exponentiation for Singular Cardinals}
 
-As we saw\footnote{Actually we didn't saw the proof, so you can rather believe me xD or check my \href{https://github.com/Xennonio/Consistency-Results}{Consistency Results} notes to see a complete proof of Easton's Theorem.}, the inequalities above are the only ones we can prove about regular cardinals, the next natural step is to ask if there is a generalization, or some similar result about singular cardinals. In fact, for singular cardinals $\kappa$, various additional constraints in the behavior of $2^\kappa$ are known.
+As we saw\footnote{Actually we didn't saw the proof, so you can rather believe me xD, or check my \href{https://github.com/Xennonio/Consistency-Results}{Consistency Results} notes to see a complete proof of Easton's Theorem.}, the inequalities above are the only ones we can prove about regular cardinals, the next natural step is to ask if there is a generalization, or some similar result about singular cardinals. In fact, for singular cardinals $\kappa$, various additional constraints in the behavior of $2^\kappa$ are known.
 
 By now, the most interesting one is Silver's Theorem, since it implies that Easton's Theorem can't be extended to include singular cardinals. But, nowadays, Shelah's work on PCF Theory gives a lot of results on the possible values of $2^\kappa$, for $\kappa$ singular. It shows that such values are strongly influenced by the values on smaller cardinals, as we will see next and when proving Silver's Theorem, whereas Easton shows this is not the case for regular cardinals.
 
@@ -136,7 +136,7 @@ Now, as a warmup, let's see what we got under the Generalized Continuum Hypothes
 \end{lemma}
 
 \begin{proof}
-    If $\alpha\leq\beta$, by \cref{lem:card_exp_a_leq_b} $\aleph_\alpha^{\aleph_\beta}=2^{\aleph_\beta}=\aleph_{\beta+1}$. Let then $\alpha>\beta$. If we let $S=[\omega_\alpha]^{\aleph_\beta}$, by \cref{lem:card_exp_a_leq_b} we have $|S|=\aleph_\alpha^{\aleph_\beta}$. In \cref{sec:weakly_inaccessible}, we saw $\cf(\kappa)$ can be interpreted as the least size of an unbounded set in $\kappa$. In particular, since $\cf(\aleph_\alpha)=\aleph_\alpha$ for regular cardinals, we know every $X\subseteq\omega_\alpha$, with $|X|<\aleph_\alpha$, is limited. Let then
+    If $\alpha\leq\beta$, by \cref{lem:card_exp_a_leq_b} $\aleph_\alpha^{\aleph_\beta}=2^{\aleph_\beta}=\aleph_{\beta+1}$. Let then $\alpha>\beta$. If we let $S=[\omega_\alpha]^{\aleph_\beta}$, by \cref{lem:card_exp_a_leq_b} we have $|S|=\aleph_\alpha^{\aleph_\beta}$. In \cref{sec:weakly_inaccessible}, we saw $\cf{\kappa}$ can be interpreted as the least size of an unbounded set in $\kappa$. In particular, since $\cf{\aleph_\alpha}=\aleph_\alpha$ for regular cardinals, we know every $X\subseteq\omega_\alpha$, with $|X|<\aleph_\alpha$, is limited. Let then
     $$B=\bigcup_{\delta<\omega_\alpha}\mc{P}(\delta)$$
     be the collection of all limited subsets of $\omega_\alpha$. We claim $|B|\leq\aleph_\alpha$; then, since $S\subset B$, we have $|S|=\aleph_\alpha^{\aleph_\beta}=\aleph_\alpha$, since clearly $|S|=\aleph_\alpha^{\aleph_\beta}\geq\aleph_\alpha$. From the definition of $B$ we have
     $$|B|\leq\sum_{\delta<\omega_\alpha}2^{|\delta|}$$
@@ -149,8 +149,8 @@ Let's now prove a similar, but more complicated, formula for singular cardinals.
 \begin{lemma}{(Under GCH)}{singular_card_exp_gch}
     If $\aleph_\alpha$ is a singular cardinal, then
     $$\aleph_\alpha^{\aleph_\beta}=\begin{cases}
-        \aleph_\alpha,\text{ if }\aleph_\beta<\cf\rp{\aleph_\alpha},\\
-        \aleph_{\alpha+1},\text{ if }\cf\rp{\aleph_\alpha}\leq\aleph_\beta\leq\aleph_\alpha,\\
+        \aleph_\alpha,\text{ if }\aleph_\beta<\cf{\aleph_\alpha},\\
+        \aleph_{\alpha+1},\text{ if }\cf{\aleph_\alpha}\leq\aleph_\beta\leq\aleph_\alpha,\\
         \aleph_{\beta+1},\text{ if }\aleph_\beta\geq\aleph_\alpha
     \end{cases}$$
 \end{lemma}
@@ -165,11 +165,11 @@ Schematically, we obtain \cref{fig:singular_gch}\footnote{where the eventual lin
 \end{figure}
 
 \begin{proof}
-    If $\beta\geq\alpha$, then $\aleph_\beta\geq\aleph_\alpha$ and $\aleph_\alpha^{\aleph_\beta}=2^{\aleph_\beta}=\aleph_{\beta+1}$. If $\aleph_\beta<\cf\rp{\aleph_\alpha}$, then any $X\subseteq\omega_\alpha$ with $|X|=\aleph_\beta<\cf\rp{\aleph_\alpha}<\aleph_\alpha$ is bounded in $\omega_\alpha$ and, therefore, by the same argument as in the previous theorem, we have $\aleph_\alpha^{\aleph_\beta}=\aleph_\alpha$. Let then $\cf\rp{\aleph_\alpha}\leq\aleph_\beta\leq\aleph_\alpha$. On the one hand
+    If $\beta\geq\alpha$, then $\aleph_\beta\geq\aleph_\alpha$ and $\aleph_\alpha^{\aleph_\beta}=2^{\aleph_\beta}=\aleph_{\beta+1}$. If $\aleph_\beta<\cf{\aleph_\alpha}$, then any $X\subseteq\omega_\alpha$ with $|X|=\aleph_\beta<\cf{\aleph_\alpha}<\aleph_\alpha$ is bounded in $\omega_\alpha$ and, therefore, by the same argument as in the previous theorem, we have $\aleph_\alpha^{\aleph_\beta}=\aleph_\alpha$. Let then $\cf{\aleph_\alpha}\leq\aleph_\beta\leq\aleph_\alpha$. On the one hand
     \begin{equation}\label{eq:aux_eq}
     \aleph_\alpha\leq\aleph_\alpha^{\aleph_\beta}\leq\aleph_\alpha^{\aleph_\alpha}=2^{\aleph_\alpha}=\aleph_{\alpha+1}
     \end{equation}
-    But on the other, by \cref{cor:cf_exponentiation}, $\cf\rp{\aleph_\alpha^{\aleph_\beta}}>\aleph_\beta$ and, since $\aleph_\beta\geq\cf\rp{\aleph_\alpha}$, then $\cf\rp{\aleph_\alpha^{\aleph_\beta}}\neq\cf\rp{\aleph_\alpha}$, so $\aleph_\alpha^{\aleph_\beta}\neq\aleph_\alpha$. With this and \cref{eq:aux_eq}, the only possible value for $\aleph_\alpha^{\aleph_\beta}$ is $\aleph_{\alpha+1}$.
+    But on the other, by \cref{cor:cf_exponentiation}, $\cf{\aleph_\alpha^{\aleph_\beta}}>\aleph_\beta$ and, since $\aleph_\beta\geq\cf{\aleph_\alpha}$, then $\cf{\aleph_\alpha^{\aleph_\beta}}\neq\cf{\aleph_\alpha}$, so $\aleph_\alpha^{\aleph_\beta}\neq\aleph_\alpha$. With this and \cref{eq:aux_eq}, the only possible value for $\aleph_\alpha^{\aleph_\beta}$ is $\aleph_{\alpha+1}$.
 \end{proof}
 
 \subsection{Hausdorff's Formula}

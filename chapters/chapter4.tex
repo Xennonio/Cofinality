@@ -1,6 +1,6 @@
 \chapter{Silver's Theorem}
 
-In order to prove Silver's Theorem, we will need a really powerful concept called stationary sets. Besides Silver's Theorem, we will also see stationary sets proves a lot of other important results.
+In order to prove Silver's Theorem, we will need a really powerful concept called stationary sets. Besides Silver's Theorem, we will also see stationary sets (more specifically, Fodor's Lemma) proves a lot of other important results.
 
 \section{Clubs}
 
@@ -148,7 +148,7 @@ We also say $\mc{B}$ forms a $\Delta$-system, if there is a set $R$ such that $\
 Let's now state the main theorem of this section. Roughly, it says that if GCH holds for all cardinals smaller than some singular with uncountable cofinality, then it also holds for it.
 
 \begin{theorem}{Silver's Theorem}{silver}
-    Let $\aleph_\lambda$ be a singular cardinal, with $\cf(\lambda)>\omega$. If $2^{\aleph_\alpha}=\aleph_{\alpha+1}$, for every $\alpha<\lambda$, then
+    Let $\aleph_\lambda$ be a singular cardinal, with $\cf{\lambda}>\omega$. If $2^{\aleph_\alpha}=\aleph_{\alpha+1}$, for every $\alpha<\lambda$, then
     $$2^{\aleph_\lambda}=\aleph_{\lambda+1}$$
 \end{theorem}
 
@@ -158,7 +158,9 @@ The proof of Silver's theorem is quite intricate, and perhaps many of the steps 
 
 The original theorem appeared in 1974 at \cite{bib:silver}, in an article called ``On the singular cardinals problem'', and stated that GCH couldn't fail for the first time in a singular cardinal of uncountable cofinality. This result was inspired by the work of Magidor, who at the time was interested in proving that certain types of ultrafilters, called regular ultrafilters, did not exist in $\omega_1$. Instead, he proved that if they did exist, Silver's theorem holds for $\lambda=\omega_1$!\footnote{Not a factorial joke.}
 
-So, roughly, based on Magidor's results, instead of trying to construct directly such object, Silver extends the universe through forcing! He adds to the ground model $M$ a bijection between $2^{\cf(\kappa)}$ and $\aleph_0$ to make it countable, which simplify the combinatorics a lot. He then construct an ultraproduct of the ground model in which $\mc{P}(\kappa)$ is small, allowing him to ``reflect'' such result and conclude $\mc{P}(\kappa)$ is also small in the ground model $M$. A complete proof can be found in \cite{bib:gallart}.
+So, roughly, based on Magidor's results, instead of trying to construct directly such object, Silver extends the universe through forcing! He adds to the ground model $M$ a bijection between $2^{\cf{\kappa}}$ and $\aleph_0$ to make it countable, which simplify the combinatorics a lot. He then construct an ultraproduct of the ground model in which $\mc{P}(\kappa)$ is small, allowing him to ``reflect'' such result and conclude $\mc{P}(\kappa)$ is also small in the ground model $M$. A complete proof can be found in \cite{bib:gallart}.
+
+Knowing that, many people simplified his proof in such a way that nowadays we can prove it in introductory set theory books. Despite this, much of the motivation behind what is used remains in Silver's original idea, and then it may seem quite strange.
 
 \subsection{Proof}
 In order to prove it, we will first prove a series of lemmas needed to show Silver's result.
@@ -178,7 +180,7 @@ It's easy to see that, under GCH, the concept of a limit cardinal matches with t
     where in the inequality we used \cref{lem:card_exp_a_leq_b}.
 \end{proof}
 
-\lasereye{Throughout this section, we will fix a $\lambda$ as in Silver's Theorem, and let $\kappa=\cf(\lambda)<\lambda$}. Then, by the previous Lemma, we can conclude the following, which we will use extensively from now on
+\lasereye{Throughout this section, we will fix a $\lambda$ as in Silver's Theorem, and let $\kappa=\cf{\lambda}<\lambda$}. Then, by the previous Lemma, we can conclude the following, which we will use extensively from now on
 
 \begin{equation}\label{eq:silver_aux_eq}
     2^\kappa<\aleph_\lambda\text{ and }\aleph_\alpha^\kappa<\aleph_\lambda\text{, for every }\alpha<\lambda.
